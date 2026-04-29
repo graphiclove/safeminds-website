@@ -3,9 +3,10 @@ import Link from 'next/link'
 const plans = [
   {
     name: 'Starter',
-    employees: '1–10 Mitarbeitende',
-    pricePerMa: '4,99',
-    totalFrom: '≈ € 49,90 / Monat',
+    employees: 'bis 10 Mitarbeitende',
+    priceYear: '599',
+    priceMonthly: '49,90',
+    perMaHint: '≈ € 4,99 / MA',
     desc: 'Für Kleinbetriebe und Handwerk — alle Kurse, sofortiger Zugang.',
     features: [
       'Bis zu 10 Nutzer',
@@ -21,9 +22,10 @@ const plans = [
   },
   {
     name: 'Basic',
-    employees: '11–25 Mitarbeitende',
-    pricePerMa: '4,49',
-    totalFrom: '≈ € 112 / Monat',
+    employees: 'bis 25 Mitarbeitende',
+    priceYear: '1.347',
+    priceMonthly: '112',
+    perMaHint: '≈ € 4,49 / MA',
     desc: 'Für wachsende Teams — transparent, dokumentiert, mehrsprachig.',
     features: [
       'Bis zu 25 Nutzer',
@@ -39,9 +41,10 @@ const plans = [
   },
   {
     name: 'Standard',
-    employees: '26–50 Mitarbeitende',
-    pricePerMa: '3,99',
-    totalFrom: '≈ € 199 / Monat',
+    employees: 'bis 50 Mitarbeitende',
+    priceYear: '2.394',
+    priceMonthly: '199',
+    perMaHint: '≈ € 3,99 / MA',
     desc: 'Die goldene Mitte — volle Dokumentation, Mehrsprachigkeit, kein Dolmetscher mehr.',
     features: [
       'Bis zu 50 Nutzer',
@@ -58,9 +61,10 @@ const plans = [
   },
   {
     name: 'Business',
-    employees: '51–100 Mitarbeitende',
-    pricePerMa: '3,49',
-    totalFrom: '≈ € 349 / Monat',
+    employees: 'bis 100 Mitarbeitende',
+    priceYear: '4.188',
+    priceMonthly: '349',
+    perMaHint: '≈ € 3,49 / MA',
     desc: 'Für mittelständische Betriebe — inkl. individualisierte Kursinhalte.',
     features: [
       'Bis zu 100 Nutzer',
@@ -76,9 +80,10 @@ const plans = [
   },
   {
     name: 'Enterprise',
-    employees: '101–250+ Mitarbeitende',
-    pricePerMa: '2,99',
-    totalFrom: 'ab € 302 / Monat',
+    employees: 'ab 101 Mitarbeitende',
+    priceYear: null,
+    priceMonthly: null,
+    perMaHint: 'ab € 2,99 / MA',
     desc: 'Für Konzerne und Unternehmensgruppen mit zentraler Verwaltung und SSO.',
     features: [
       'Bis zu 250+ Nutzer',
@@ -104,7 +109,7 @@ export function Pricing() {
             Einfache, transparente Preise
           </h2>
           <p className="mt-3 text-gray-500 max-w-md mx-auto">
-            Pro Mitarbeiter · Jährlich abgerechnet · 14 Tage kostenlos testen · Keine Kreditkarte nötig
+            Jährliche Abrechnung · 14 Tage kostenlos testen · Keine Kreditkarte nötig
           </p>
         </div>
 
@@ -134,17 +139,28 @@ export function Pricing() {
               </div>
 
               <div>
-                <div className="flex items-baseline gap-1">
-                  <span className={`text-3xl font-extrabold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
-                    € {plan.pricePerMa}
-                  </span>
-                </div>
-                <p className={`text-xs mt-0.5 ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>
-                  pro MA / Monat
-                </p>
-                <p className={`text-xs mt-0.5 font-medium ${plan.highlight ? 'text-blue-100' : 'text-gray-500'}`}>
-                  {plan.totalFrom}
-                </p>
+                {plan.priceYear ? (
+                  <>
+                    <div className="flex items-baseline gap-1">
+                      <span className={`text-3xl font-extrabold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
+                        € {plan.priceYear}
+                      </span>
+                      <span className={`text-sm font-semibold ${plan.highlight ? 'text-blue-200' : 'text-gray-500'}`}>/Jahr</span>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${plan.highlight ? 'text-blue-300' : 'text-gray-400'}`}>
+                      € {plan.priceMonthly} / Monat · {plan.perMaHint}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <span className={`text-2xl font-bold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
+                      Auf Anfrage
+                    </span>
+                    <p className={`text-xs mt-0.5 ${plan.highlight ? 'text-blue-300' : 'text-gray-400'}`}>
+                      {plan.perMaHint}
+                    </p>
+                  </>
+                )}
                 <p className={`text-xs mt-2 leading-relaxed ${plan.highlight ? 'text-blue-200' : 'text-gray-500'}`}>
                   {plan.desc}
                 </p>
