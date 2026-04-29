@@ -3,13 +3,14 @@ import Link from 'next/link'
 const plans = [
   {
     name: 'Starter',
-    employees: 'bis 10 Mitarbeitende',
-    price: '49',
-    perMa: '≈ € 4,90 / MA',
-    desc: 'Für kleine Handwerksbetriebe — alle Kurse, sofortiger Zugang.',
+    employees: '1–10 Mitarbeitende',
+    pricePerMa: '4,99',
+    totalFrom: '≈ € 49,90 / Monat',
+    desc: 'Für Kleinbetriebe und Handwerk — alle Kurse, sofortiger Zugang.',
     features: [
       'Bis zu 10 Nutzer',
-      'Alle verfügbaren Kurse inklusive',
+      'Alle Kurse inklusive',
+      'Mehrsprachige Unterweisungen',
       'Zertifikate + Dokumentation',
       'E-Mail-Support',
     ],
@@ -19,14 +20,33 @@ const plans = [
     highlight: false,
   },
   {
-    name: 'Team',
-    employees: 'bis 30 Mitarbeitende',
-    price: '119',
-    perMa: '≈ € 3,97 / MA',
-    desc: 'Für wachsende Betriebe — alle Kurse, Reporting und automatische Erinnerungen.',
+    name: 'Basic',
+    employees: '11–25 Mitarbeitende',
+    pricePerMa: '4,49',
+    totalFrom: '≈ € 112 / Monat',
+    desc: 'Für wachsende Teams — transparent, dokumentiert, mehrsprachig.',
     features: [
-      'Bis zu 30 Nutzer',
-      'Alle verfügbaren Kurse inklusive',
+      'Bis zu 25 Nutzer',
+      'Alle Kurse inklusive',
+      'Mehrsprachige Unterweisungen',
+      'Admin-Dashboard + Reporting',
+      'Automatische Erinnerungen',
+    ],
+    cta: 'Kostenlos testen',
+    ctaHref: '/testen',
+    ctaStyle: 'primary',
+    highlight: false,
+  },
+  {
+    name: 'Standard',
+    employees: '26–50 Mitarbeitende',
+    pricePerMa: '3,99',
+    totalFrom: '≈ € 199 / Monat',
+    desc: 'Die goldene Mitte — volle Dokumentation, Mehrsprachigkeit, kein Dolmetscher mehr.',
+    features: [
+      'Bis zu 50 Nutzer',
+      'Alle Kurse inklusive',
+      'Mehrsprachige Unterweisungen',
       'Admin-Dashboard + Reporting',
       'Automatische Erinnerungen',
       'Prioritäts-Support',
@@ -38,15 +58,15 @@ const plans = [
   },
   {
     name: 'Business',
-    employees: 'bis 100 Mitarbeitende',
-    price: '299',
-    perMa: '≈ € 2,99 / MA',
+    employees: '51–100 Mitarbeitende',
+    pricePerMa: '3,49',
+    totalFrom: '≈ € 349 / Monat',
     desc: 'Für mittelständische Betriebe — inkl. individualisierte Kursinhalte.',
     features: [
       'Bis zu 100 Nutzer',
-      'Alle verfügbaren Kurse inklusive',
-      'Individualisierte Kursinhalte',
+      'Alle Kurse inklusive',
       'Mehrsprachige Unterweisungen',
+      'Individualisierte Kursinhalte',
       'Dedizierter Ansprechpartner',
     ],
     cta: 'Kostenlos testen',
@@ -56,12 +76,12 @@ const plans = [
   },
   {
     name: 'Enterprise',
-    employees: 'ab 100 Mitarbeitende',
-    price: 'Auf Anfrage',
-    perMa: '',
+    employees: '101–250+ Mitarbeitende',
+    pricePerMa: '2,99',
+    totalFrom: 'ab € 302 / Monat',
     desc: 'Für Konzerne und Unternehmensgruppen mit zentraler Verwaltung und SSO.',
     features: [
-      'Unbegrenzte Nutzer',
+      'Bis zu 250+ Nutzer',
       'SSO & API-Integration',
       'Individuelle Kursproduktion',
       'SLA-Garantie',
@@ -77,22 +97,22 @@ const plans = [
 export function Pricing() {
   return (
     <section className="bg-gray-50 py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
           <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">Preise</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             Einfache, transparente Preise
           </h2>
           <p className="mt-3 text-gray-500 max-w-md mx-auto">
-            Jährlich abgerechnet · 14 Tage kostenlos testen · Keine Kreditkarte nötig
+            Pro Mitarbeiter · Jährlich abgerechnet · 14 Tage kostenlos testen · Keine Kreditkarte nötig
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch mt-12">
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 items-stretch mt-12">
           {plans.map(plan => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl p-6 flex flex-col gap-4 ${
+              className={`relative rounded-2xl p-5 flex flex-col gap-4 ${
                 plan.highlight
                   ? 'bg-blue-600 text-white shadow-xl ring-2 ring-blue-400'
                   : 'bg-white border border-gray-100 shadow-sm'
@@ -114,21 +134,17 @@ export function Pricing() {
               </div>
 
               <div>
-                {plan.price === 'Auf Anfrage' ? (
-                  <span className="text-2xl font-bold text-gray-900">Auf Anfrage</span>
-                ) : (
-                  <>
-                    <div className="flex items-baseline gap-1">
-                      <span className={`text-3xl font-extrabold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
-                        € {plan.price}
-                      </span>
-                      <span className={`text-sm ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>/ Monat</span>
-                    </div>
-                    <p className={`text-xs mt-0.5 ${plan.highlight ? 'text-blue-300' : 'text-gray-400'}`}>
-                      {plan.perMa} · jährlich
-                    </p>
-                  </>
-                )}
+                <div className="flex items-baseline gap-1">
+                  <span className={`text-3xl font-extrabold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
+                    € {plan.pricePerMa}
+                  </span>
+                </div>
+                <p className={`text-xs mt-0.5 ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>
+                  pro MA / Monat
+                </p>
+                <p className={`text-xs mt-0.5 font-medium ${plan.highlight ? 'text-blue-100' : 'text-gray-500'}`}>
+                  {plan.totalFrom}
+                </p>
                 <p className={`text-xs mt-2 leading-relaxed ${plan.highlight ? 'text-blue-200' : 'text-gray-500'}`}>
                   {plan.desc}
                 </p>

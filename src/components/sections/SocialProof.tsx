@@ -1,8 +1,8 @@
 const stats = [
   { value: '10.000+', label: 'Geschulte Fachkräfte', desc: 'in ganz Deutschland' },
   { value: '98%', label: 'Abschlussquote', desc: 'nahezu jeder schließt ab' },
-  { value: '30 Min', label: 'Ø Kursdauer', desc: 'kompakt und effizient' },
-  { value: '25+', label: 'Kurse verfügbar', desc: 'alle Branchen abgedeckt' },
+  { value: 'unter 10 Min', label: 'Ø Kursdauer', desc: 'kompakt und effizient' },
+  { value: '47+', label: 'Kurse verfügbar', desc: 'alle Branchen abgedeckt' },
 ]
 
 export function SocialProof() {

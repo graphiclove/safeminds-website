@@ -38,8 +38,8 @@ export function Hero() {
             <ul className="flex flex-col gap-2">
               {[
                 'Bestanden-Garantie — jede:r schließt erfolgreich ab',
+                'Mehrsprachig — Polnisch, Türkisch, Rumänisch u.v.m.',
                 'Zertifikat sofort als PDF — revisionssicher archiviert',
-                'Jährlich abgerechnet — transparent und planbar',
               ].map(point => (
                 <li key={point} className="flex items-center gap-2 text-gray-700 text-sm">
                   <svg className="h-4 w-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
