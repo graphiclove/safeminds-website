@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { Header } from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -143,239 +141,247 @@ const packages = [
 
 export default function OnboardingPage() {
   return (
-    <>
-      <Header />
-      <main>
+    <main>
 
-        {/* Hero */}
-        <section className="bg-white pt-16 pb-20 overflow-hidden">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 border border-orange-100 px-4 py-1.5 text-sm font-medium text-orange-700 mb-6">
-                <span className="h-2 w-2 rounded-full bg-orange-500" />
-                Neu: Digitales Onboarding
-              </span>
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-                Neue Mitarbeiter einweisen —<br />
-                <span className="text-orange-500">ohne jedes Mal dabei zu sein.</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
-                Wir produzieren maßgeschneiderte Onboarding-Videos für Ihre Abläufe, Maschinen und Prozesse —
-                mehrsprachig, revisionssicher, in 7–14 Werktagen geliefert. Bundesweit.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+      {/* Hero */}
+      <section className="bg-white pt-16 pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full bg-green-50 border border-green-100 px-4 py-1.5 text-sm font-medium text-green-700 mb-6">
+              <span className="h-2 w-2 rounded-full bg-green-500" />
+              Neu: Digitales Onboarding
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+              Neue Mitarbeiter einweisen —<br />
+              <span className="text-green-600">ohne jedes Mal dabei zu sein.</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl">
+              Wir produzieren maßgeschneiderte Onboarding-Videos für Ihre Abläufe, Maschinen und Prozesse —
+              mehrsprachig, revisionssicher, in 7–14 Werktagen. Bundesweit.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/kontakt"
+                className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-xl transition-colors"
+              >
+                Kostenloses Erstgespräch
+                <span>→</span>
+              </Link>
+              <a
+                href="#prozess"
+                className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-700 hover:border-gray-300 font-semibold px-8 py-4 rounded-xl transition-colors"
+              >
+                So funktioniert es
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Placeholder */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300">
+            <div className="text-center text-gray-400">
+              <div className="text-5xl mb-3">▶</div>
+              <p className="text-lg font-medium">Erklärvideo folgt</p>
+              <p className="text-sm mt-1">Was ist Onboarding? Was ist das Problem? Unsere Lösung.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+              Das kennen Sie wahrscheinlich
+            </h2>
+            <p className="text-gray-500 max-w-lg mx-auto">
+              Besonders Betriebe mit wechselnden oder saisonalen Mitarbeitern verlieren täglich Zeit beim Einweisen.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {problems.map(p => (
+              <div key={p.title} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <span className="text-3xl">{p.icon}</span>
+                <h3 className="mt-3 text-base font-bold text-gray-900">{p.title}</h3>
+                <p className="mt-2 text-sm text-gray-500 leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-green-600 uppercase tracking-wider mb-3">Branchen</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+              Für jeden Betrieb anpassbar
+            </h2>
+            <p className="text-gray-500 max-w-lg mx-auto">
+              Wir haben Erfahrung mit sehr unterschiedlichen Abläufen — vom Maschinenraum bis zum Büro.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {industries.map(i => (
+              <div key={i.name} className="rounded-2xl bg-white border border-gray-100 p-6">
+                <span className="text-3xl">{i.icon}</span>
+                <h3 className="mt-3 text-base font-bold text-gray-900">{i.name}</h3>
+                <p className="mt-2 text-sm text-gray-500 leading-relaxed">{i.example}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="prozess" className="bg-gray-900 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-green-400 uppercase tracking-wider mb-3">Unser Prozess</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+              Von Auftrag bis Freischaltung<br />in 7–14 Werktagen
+            </h2>
+            <p className="text-gray-400 max-w-lg mx-auto">
+              Wir kommen zu Ihnen — oder Sie schicken uns Ihr Material. Beides funktioniert.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((step, idx) => (
+              <div key={step.number} className="relative">
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gray-700 -translate-x-6 z-0" />
+                )}
+                <div className="relative z-10 bg-gray-800 rounded-2xl p-6 border border-gray-700 h-full">
+                  <div className="text-3xl font-extrabold text-green-400 mb-4">{step.number}</div>
+                  <h3 className="text-base font-bold text-white mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">{step.desc}</p>
+                  <span className="inline-block bg-gray-700 text-green-400 text-xs font-semibold px-3 py-1 rounded-full">
+                    {step.duration}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-sm text-gray-500 mt-10">
+            Kein Vor-Ort-Termin möglich? Kein Problem — mit Fotos, Kurzvideos und einer Beschreibung Ihrer Abläufe erstellen wir professionelle Animationen.
+          </p>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-green-600 uppercase tracking-wider mb-3">Pakete</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+              Einmalige Investition.<br />Dauerhafter Nutzen.
+            </h2>
+            <p className="text-gray-500 max-w-md mx-auto">
+              Einmalproduktion — danach unbegrenzt nutzbar. Aktualisierung optional jährlich buchbar.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {packages.map(pkg => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-2xl p-7 flex flex-col gap-5 ${
+                  pkg.highlight
+                    ? 'bg-green-600 text-white shadow-xl ring-2 ring-green-400'
+                    : 'bg-white border border-gray-200 shadow-sm'
+                }`}
+              >
+                {pkg.highlight && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 text-white text-xs font-bold px-4 py-1 whitespace-nowrap">
+                    Empfohlen
+                  </span>
+                )}
+                <div>
+                  <p className={`text-xs font-bold uppercase tracking-wider ${pkg.highlight ? 'text-green-100' : 'text-gray-400'}`}>
+                    {pkg.name}
+                  </p>
+                  <p className={`text-sm font-semibold mt-0.5 ${pkg.highlight ? 'text-white' : 'text-gray-600'}`}>
+                    {pkg.subtitle}
+                  </p>
+                </div>
+                <div>
+                  {pkg.unit ? (
+                    <>
+                      <div className="flex items-baseline gap-1">
+                        <span className={`text-3xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-gray-900'}`}>
+                          € {pkg.price}
+                        </span>
+                      </div>
+                      <p className={`text-xs mt-0.5 ${pkg.highlight ? 'text-green-100' : 'text-gray-400'}`}>
+                        {pkg.unit} · zzgl. MwSt.
+                      </p>
+                    </>
+                  ) : (
+                    <span className={`text-2xl font-bold ${pkg.highlight ? 'text-white' : 'text-gray-900'}`}>
+                      {pkg.price}
+                    </span>
+                  )}
+                </div>
+                <ul className="flex flex-col gap-2 flex-1">
+                  {pkg.features.map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <svg
+                        className={`h-4 w-4 flex-shrink-0 mt-0.5 ${pkg.highlight ? 'text-green-200' : 'text-green-500'}`}
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className={pkg.highlight ? 'text-green-50' : 'text-gray-600'}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
                 <Link
                   href="/kontakt"
-                  className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl transition-colors"
-                >
-                  Kostenloses Erstgespräch
-                  <span>→</span>
-                </Link>
-                <a
-                  href="#prozess"
-                  className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-700 hover:border-orange-300 hover:text-orange-600 font-semibold px-8 py-4 rounded-xl transition-colors"
-                >
-                  So funktioniert es
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Problem */}
-        <section className="bg-gray-50 py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-                Das kennen Sie wahrscheinlich
-              </h2>
-              <p className="text-gray-500 max-w-lg mx-auto">
-                Besonders Betriebe mit wechselnden oder saisonalen Mitarbeitern verlieren täglich Zeit beim Einweisen.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {problems.map(p => (
-                <div key={p.title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                  <span className="text-3xl">{p.icon}</span>
-                  <h3 className="mt-3 text-base font-bold text-gray-900">{p.title}</h3>
-                  <p className="mt-2 text-sm text-gray-500 leading-relaxed">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries */}
-        <section className="bg-white py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <p className="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-3">Branchen</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-                Für jeden Betrieb anpassbar
-              </h2>
-              <p className="text-gray-500 max-w-lg mx-auto">
-                Wir haben Erfahrung mit sehr unterschiedlichen Abläufen — vom Maschinenraum bis zum Büro.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {industries.map(i => (
-                <div key={i.name} className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
-                  <span className="text-3xl">{i.icon}</span>
-                  <h3 className="mt-3 text-base font-bold text-gray-900">{i.name}</h3>
-                  <p className="mt-2 text-sm text-gray-500 leading-relaxed">{i.example}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Process */}
-        <section id="prozess" className="bg-gray-900 text-white py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-3">Unser Prozess</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-                Von Auftrag bis Freischaltung<br />in 7–14 Werktagen
-              </h2>
-              <p className="text-gray-400 max-w-lg mx-auto">
-                Wir kommen zu Ihnen — oder Sie schicken uns Ihr Material. Beides funktioniert.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, idx) => (
-                <div key={step.number} className="relative">
-                  {idx < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gray-700 -translate-x-6 z-0" />
-                  )}
-                  <div className="relative z-10 bg-gray-800 rounded-2xl p-6 border border-gray-700 h-full">
-                    <div className="text-3xl font-extrabold text-orange-500 mb-4">{step.number}</div>
-                    <h3 className="text-base font-bold text-white mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed mb-4">{step.desc}</p>
-                    <span className="inline-block bg-gray-700 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full">
-                      {step.duration}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-sm text-gray-500 mt-10">
-              Kein Vor-Ort-Termin möglich? Kein Problem — mit Fotos, Kurzvideos und einer Beschreibung Ihrer Abläufe erstellen wir professionelle Animationen.
-            </p>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="bg-white py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <p className="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-3">Pakete</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-                Einmalige Investition.<br />Dauerhafter Nutzen.
-              </h2>
-              <p className="text-gray-500 max-w-md mx-auto">
-                Einmalproduktion — danach unbegrenzt nutzbar. Aktualisierung optional jährlich buchbar.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {packages.map(pkg => (
-                <div
-                  key={pkg.name}
-                  className={`relative rounded-2xl p-7 flex flex-col gap-5 ${
+                  className={`w-full text-center rounded-xl py-3 font-semibold text-sm transition-colors ${
                     pkg.highlight
-                      ? 'bg-orange-500 text-white shadow-xl ring-2 ring-orange-300'
-                      : 'bg-white border border-gray-200 shadow-sm'
+                      ? 'bg-white text-green-700 hover:bg-green-50'
+                      : 'bg-green-600 text-white hover:bg-green-700'
                   }`}
                 >
-                  {pkg.highlight && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gray-900 text-white text-xs font-bold px-4 py-1 whitespace-nowrap">
-                      Empfohlen
-                    </span>
-                  )}
-                  <div>
-                    <p className={`text-xs font-bold uppercase tracking-wider ${pkg.highlight ? 'text-orange-100' : 'text-gray-400'}`}>
-                      {pkg.name}
-                    </p>
-                    <p className={`text-sm font-semibold mt-0.5 ${pkg.highlight ? 'text-white' : 'text-gray-600'}`}>
-                      {pkg.subtitle}
-                    </p>
-                  </div>
-                  <div>
-                    {pkg.unit ? (
-                      <>
-                        <div className="flex items-baseline gap-1">
-                          <span className={`text-3xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-gray-900'}`}>
-                            € {pkg.price}
-                          </span>
-                        </div>
-                        <p className={`text-xs mt-0.5 ${pkg.highlight ? 'text-orange-100' : 'text-gray-400'}`}>
-                          {pkg.unit} · zzgl. MwSt.
-                        </p>
-                      </>
-                    ) : (
-                      <span className={`text-2xl font-bold ${pkg.highlight ? 'text-white' : 'text-gray-900'}`}>
-                        {pkg.price}
-                      </span>
-                    )}
-                  </div>
-                  <ul className="flex flex-col gap-2 flex-1">
-                    {pkg.features.map(f => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <svg
-                          className={`h-4 w-4 flex-shrink-0 mt-0.5 ${pkg.highlight ? 'text-white' : 'text-orange-500'}`}
-                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className={pkg.highlight ? 'text-orange-50' : 'text-gray-600'}>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/kontakt"
-                    className={`w-full text-center rounded-xl py-3 font-semibold text-sm transition-colors ${
-                      pkg.highlight
-                        ? 'bg-white text-orange-600 hover:bg-orange-50'
-                        : 'bg-orange-500 text-white hover:bg-orange-600'
-                    }`}
-                  >
-                    {pkg.cta}
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            {/* Retainer Hinweis */}
-            <div className="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6 max-w-2xl mx-auto text-center">
-              <p className="font-semibold text-gray-900 mb-2">🔄 Aktualisierungs-Abo</p>
-              <p className="text-sm text-gray-600">
-                Neue Mitarbeiter, neue Maschinen, neue Abläufe? Mit dem optionalen Jahres-Abo ab <strong>€ 490 / Jahr</strong> aktualisieren
-                wir Ihre Videos und übersetzen Änderungen — ohne Neuproduktion.
-              </p>
-            </div>
+                  {pkg.cta}
+                </Link>
+              </div>
+            ))}
           </div>
-        </section>
 
-        {/* CTA */}
-        <section className="bg-orange-500 py-16">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-extrabold text-white mb-4">
-              Bereit für Onboarding, das wirklich funktioniert?
-            </h2>
-            <p className="text-orange-100 text-lg mb-8">
-              Kostenfreies Erstgespräch — wir analysieren Ihren Bedarf und machen ein konkretes Angebot.
+          <div className="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6 max-w-2xl mx-auto text-center">
+            <p className="font-semibold text-gray-900 mb-2">🔄 Aktualisierungs-Abo</p>
+            <p className="text-sm text-gray-600">
+              Neue Mitarbeiter, neue Maschinen, neue Abläufe? Mit dem optionalen Jahres-Abo ab <strong>€ 490 / Jahr</strong> aktualisieren
+              wir Ihre Videos und übersetzen Änderungen — ohne Neuproduktion.
             </p>
-            <Link
-              href="/kontakt"
-              className="inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-10 py-4 rounded-xl hover:bg-orange-50 transition-colors text-lg"
-            >
-              Jetzt Erstgespräch anfragen →
-            </Link>
-            <p className="text-orange-200 text-sm mt-4">Bundesweit · Antwort innerhalb von 24 Stunden</p>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </main>
-      <Footer />
-    </>
+      {/* CTA */}
+      <section className="bg-green-600 py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-extrabold text-white mb-4">
+            Bereit für Onboarding, das wirklich funktioniert?
+          </h2>
+          <p className="text-green-100 text-lg mb-8">
+            Kostenfreies Erstgespräch — wir analysieren Ihren Bedarf und machen ein konkretes Angebot.
+          </p>
+          <Link
+            href="/kontakt"
+            className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-10 py-4 rounded-xl hover:bg-green-50 transition-colors text-lg"
+          >
+            Jetzt Erstgespräch anfragen →
+          </Link>
+          <p className="text-green-200 text-sm mt-4">Bundesweit · Antwort innerhalb von 24 Stunden</p>
+        </div>
+      </section>
+
+    </main>
   )
 }
