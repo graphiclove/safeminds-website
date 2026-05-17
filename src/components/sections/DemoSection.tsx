@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 // Replace ARCADE_EMBED_URL with your Arcade.software embed link
 // Create free at: https://arcade.software
-const ARCADE_EMBED_URL = '' // TODO: paste Arcade embed URL here
+const ARCADE_EMBED_URL = 'https://demo.arcade.software/0xPZbOJULhg8dFw1Y0y6?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true'
 
 export function DemoSection() {
   return (
