@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-400">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
@@ -52,8 +52,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Vergleiche */}
           <div>
+            <h4 className="text-white font-semibold mb-4">Vergleiche</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/vergleich/unterweisung24" className="hover:text-white transition-colors">SafeMinds vs. Unterweisung24</Link></li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="sm:col-span-2 lg:col-span-1">
             <h4 className="text-white font-semibold mb-4">Newsletter</h4>
             <p className="text-sm mb-4">Neuigkeiten zu Arbeitssicherheit und neuen Kursen.</p>
             <NewsletterForm />
