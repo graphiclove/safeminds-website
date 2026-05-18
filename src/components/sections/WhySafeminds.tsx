@@ -66,17 +66,20 @@ export function WhySafeminds() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map(f => (
             <div
               key={f.title}
-              className="bg-white rounded-2xl p-7 border border-[#e2e8f0]"
+              className="bg-white rounded-2xl p-7 border border-[#e8edf2] flex flex-col"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-5">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                style={{ background: '#eef2f7' }}
+              >
                 {f.icon}
               </div>
-              <h3 className="text-sm font-bold text-[#0f172a] mb-2">{f.title}</h3>
-              <p className="text-sm text-[#64748b] leading-relaxed">{f.desc}</p>
+              <h3 className="font-semibold text-[#0f172a] text-[0.9rem] mb-2 leading-snug">{f.title}</h3>
+              <p className="text-[0.85rem] text-[#64748b] leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>

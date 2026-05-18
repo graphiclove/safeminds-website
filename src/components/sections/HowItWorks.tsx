@@ -36,26 +36,29 @@ export function HowItWorks() {
     <section className="py-24" style={{ background: '#f8fafc' }}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+          <h2 className="text-[2rem] sm:text-[2.25rem] font-extrabold text-[#0f172a] leading-tight">
             So kommen Sie heute zum Zertifikat
           </h2>
-          <p className="mt-3 text-[#64748b] max-w-xl mx-auto text-base">
+          <p className="mt-3 text-[#64748b] max-w-xl mx-auto text-[0.95rem]">
             Kein Seminar, kein Termin, kein Papierkram. Einfach starten.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-4">
           {steps.map(step => (
             <div
               key={step.title}
-              className="bg-white rounded-2xl p-7 border border-[#e2e8f0] flex flex-col"
+              className="bg-white rounded-2xl p-7 border border-[#e8edf2] flex flex-col"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-5">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                style={{ background: '#eef2f7' }}
+              >
                 {step.icon}
               </div>
-              <h3 className="text-sm font-bold text-[#0f172a] mb-2">{step.title}</h3>
-              <p className="text-sm text-[#64748b] leading-relaxed flex-1">{step.desc}</p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-green-700">
+              <h3 className="font-semibold text-[#0f172a] text-[0.9rem] mb-2 leading-snug">{step.title}</h3>
+              <p className="text-[0.85rem] text-[#64748b] leading-relaxed flex-1">{step.desc}</p>
+              <div className="mt-5 inline-flex items-center gap-1.5 text-[0.75rem] font-medium text-green-700">
                 <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
