@@ -91,9 +91,9 @@ export function Hero() {
           <div className="hero-visual">
             <div className="hero-visual-inner">
 
-              {/* CARD 1: Dashboard — centered, no rotation, no hover lift */}
+              {/* CARD 1: Dashboard — centered, no rotation, minimal hover */}
               <div
-                className="animate-float-main absolute overflow-hidden rounded-2xl z-[5]"
+                className="visual-card-main animate-float-main absolute overflow-hidden rounded-2xl z-[5]"
                 style={{
                   width: '540px',
                   height: '380px',
@@ -139,10 +139,10 @@ export function Hero() {
                 </div>
               </Link>
 
-              {/* CARD 3: Zertifikat — bottom right, +3°, links to /kontakt */}
+              {/* CARD 3: Zertifikat — bottom right, +3°, links to #zertifikat */}
               <Link
-                href="/kontakt"
-                aria-label="Demo anfragen"
+                href="#zertifikat"
+                aria-label="Mehr über Zertifikate"
                 className="visual-card animate-float-right absolute overflow-hidden rounded-2xl z-[6]"
                 style={{
                   width: '290px',

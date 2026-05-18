@@ -56,27 +56,27 @@ body {
 
 @layer utilities {
   .animate-float-main {
-    animation: floatMain 7s ease-in-out infinite;
+    animation: floatMain 10s ease-in-out infinite;
   }
   .animate-float-left {
-    animation: floatLeft 8s ease-in-out infinite;
-    animation-delay: -2s;
+    animation: floatLeft 14s ease-in-out infinite;
+    animation-delay: -4s;
   }
   .animate-float-right {
-    animation: floatRight 7.5s ease-in-out infinite;
-    animation-delay: -3s;
+    animation: floatRight 13s ease-in-out infinite;
+    animation-delay: -6s;
   }
   .animate-float-badge-1 {
-    animation: floatBadge 6s ease-in-out infinite;
-    animation-delay: -1s;
+    animation: floatBadge 9s ease-in-out infinite;
+    animation-delay: -2s;
   }
   .animate-float-badge-2 {
-    animation: floatBadge 7s ease-in-out infinite;
-    animation-delay: -3s;
+    animation: floatBadge 11s ease-in-out infinite;
+    animation-delay: -5s;
   }
   .animate-float-badge-3 {
-    animation: floatBadge 8s ease-in-out infinite;
-    animation-delay: -2s;
+    animation: floatBadge 12s ease-in-out infinite;
+    animation-delay: -3s;
   }
 }
 
@@ -102,10 +102,10 @@ body {
 
 /* ===== VISUAL CARD HOVER ===== */
 .visual-card {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
 }
 .visual-card:hover {
-  transform: translateY(-12px) rotate(0deg) !important;
+  transform: translateY(-5px) rotate(0deg) !important;
   box-shadow: var(--sm-shadow-xl) !important;
   z-index: 20 !important;
 }
@@ -113,6 +113,14 @@ body {
   outline: 2px solid #1d4ed8;
   outline-offset: 2px;
   z-index: 20;
+}
+/* Dashboard — minimal hover only */
+.visual-card-main {
+  transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
+}
+.visual-card-main:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: var(--sm-shadow-xl) !important;
 }
 
 /* ===== REDUCED MOTION ===== */
