@@ -56,7 +56,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Vergleiche</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/vergleich/unterweisung24" className="hover:text-white transition-colors">SafeMinds vs. Unterweisung24</Link></li>
+              <li><Link href="/vergleich/unterweisung24" className="hover:text-white transition-colors">vs. Unterweisung24</Link></li>
             </ul>
           </div>
 

@@ -24,13 +24,13 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
 
       {/* ── HERO ── */}
       <section className="bg-white border-b border-[#e8edf2] py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-4">Vergleich</p>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0f172a] leading-tight mb-4">
             {c.headline}
           </h1>
-          <p className="text-lg text-[#64748b] mb-2">{c.subline}</p>
-          <p className="text-base text-[#64748b] max-w-2xl mx-auto leading-relaxed mb-10">{c.intro}</p>
+          <p className="text-lg font-semibold text-[#334155] mb-4">{c.subline}</p>
+          <p className="text-base text-[#64748b] leading-relaxed mb-10">{c.intro}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/testen"
@@ -51,19 +51,40 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
 
+        {/* ── COMPETITOR STRENGTHS (fairness section) ── */}
+        <section className="bg-white rounded-2xl border border-[#e8edf2] p-8">
+          <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Was {c.competitor} gut macht</p>
+          <h2 className="text-xl font-extrabold text-[#0f172a] mb-5">
+            Beide Plattformen sind solide — hier die Stärken von {c.competitor}
+          </h2>
+          <ul className="space-y-3">
+            {c.competitorStrengths.map((s) => (
+              <li key={s} className="flex items-start gap-3 text-[#334155] text-base">
+                <svg className="w-5 h-5 text-[#64748b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* ── FEATURE TABLE ── */}
         <section id="vergleich">
           <div className="text-center mb-10">
             <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Funktionsvergleich</p>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
-              SafeMinds vs. {c.competitor}
+              Feature für Feature
             </h2>
+            <p className="text-sm text-[#64748b] mt-2 max-w-lg mx-auto">
+              Angaben basieren auf öffentlich zugänglichen Informationen — Stand 2025.
+            </p>
           </div>
 
           <div className="bg-white rounded-2xl border border-[#e8edf2] overflow-hidden">
-            {/* Table header */}
-            <div className="grid grid-cols-3 border-b border-[#e8edf2]">
-              <div className="p-5 text-sm font-bold text-[#64748b] uppercase tracking-wider">Funktion</div>
+            {/* Header */}
+            <div className="grid grid-cols-3 border-b border-[#e8edf2] bg-[#f8fafc]">
+              <div className="p-5 text-xs font-bold text-[#64748b] uppercase tracking-wider">Funktion</div>
               <div className="p-5 text-center border-l border-[#e8edf2]">
                 <span className="text-sm font-extrabold text-[#1d4ed8]">SafeMinds</span>
               </div>
@@ -72,13 +93,15 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
               </div>
             </div>
 
-            {/* Rows */}
             {c.features.map((f, i) => (
               <div
                 key={f.label}
                 className={`grid grid-cols-3 border-b border-[#e8edf2] last:border-b-0 ${i % 2 === 0 ? '' : 'bg-[#f8fafc]'}`}
               >
-                <div className="p-4 text-sm text-[#334155] font-medium flex items-center">{f.label}</div>
+                <div className="p-4 text-sm text-[#334155] flex flex-col justify-center">
+                  <span className="font-medium">{f.label}</span>
+                  {f.note && <span className="text-xs text-[#94a3b8] mt-0.5">{f.note}</span>}
+                </div>
                 <div className="p-4 border-l border-[#e8edf2] flex items-center justify-center">
                   <FeatureValue value={f.safeminds} highlight />
                 </div>
@@ -88,18 +111,14 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
               </div>
             ))}
           </div>
-
-          <p className="text-xs text-[#94a3b8] text-center mt-4">
-            Stand: 2025 — Angaben basieren auf öffentlich zugänglichen Informationen. Änderungen vorbehalten.
-          </p>
         </section>
 
         {/* ── BENEFITS ── */}
         <section>
           <div className="text-center mb-10">
-            <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Warum SafeMinds</p>
+            <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Unterschiede im Detail</p>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
-              Die klaren Vorteile im Detail
+              Wo SafeMinds einen anderen Ansatz verfolgt
             </h2>
           </div>
 
@@ -119,20 +138,23 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
           </div>
         </section>
 
-        {/* ── SWITCH REASONS ── */}
+        {/* ── DIFFERENTIATORS ── */}
         <section className="bg-white rounded-2xl border border-[#e8edf2] p-10">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Warum wechseln?</p>
-            <h2 className="text-2xl font-extrabold text-[#0f172a] mb-8">
-              Das sagen Betriebe, die von {c.competitor} zu SafeMinds gewechselt haben
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Für wen passt was?</p>
+            <h2 className="text-2xl font-extrabold text-[#0f172a] mb-3">
+              SafeMinds ist die bessere Wahl, wenn…
             </h2>
+            <p className="text-sm text-[#64748b] mb-7">
+              Beide Plattformen erfüllen die gesetzlichen Anforderungen. SafeMinds ist vor allem dann im Vorteil:
+            </p>
             <ul className="space-y-4">
-              {c.switchReasons.map((reason) => (
-                <li key={reason} className="flex items-start gap-3">
+              {c.differentiators.map((d) => (
+                <li key={d} className="flex items-start gap-3">
                   <svg className="w-5 h-5 text-[#3b82f6] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
-                  <span className="text-[#334155] text-base">{reason}</span>
+                  <span className="text-[#334155] text-base">{d}</span>
                 </li>
               ))}
             </ul>
@@ -145,10 +167,10 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
           style={{ background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #3b82f6 100%)' }}
         >
           <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            Jetzt wechseln
+            Selbst überzeugen
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
-            Überzeugt? Testen Sie SafeMinds kostenlos.
+            Testen Sie SafeMinds kostenlos.
           </h2>
           <p className="text-lg mb-10 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.82)' }}>
             Keine Kreditkarte, keine Installation, kein Risiko. In 3 Minuten einsatzbereit.
@@ -198,12 +220,12 @@ function FeatureValue({ value, highlight = false }: { value: boolean | string; h
   }
   if (value === false) {
     return (
-      <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#fee2e2]">
-        <svg className="w-4 h-4 text-[#ef4444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#f1f5f9]">
+        <svg className="w-4 h-4 text-[#cbd5e1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </span>
     )
   }
-  return <span className="text-xs font-medium text-[#94a3b8] text-center">{value}</span>
+  return <span className="text-xs font-medium text-[#94a3b8] text-center leading-snug max-w-[80px]">{value}</span>
 }

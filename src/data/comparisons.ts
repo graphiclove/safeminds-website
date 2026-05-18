@@ -2,6 +2,7 @@ export interface ComparisonFeature {
   label: string
   safeminds: boolean | string
   competitor: boolean | string
+  note?: string
 }
 
 export interface ComparisonBenefit {
@@ -17,9 +18,10 @@ export interface Comparison {
   headline: string
   subline: string
   intro: string
+  competitorStrengths: string[]
   features: ComparisonFeature[]
   benefits: ComparisonBenefit[]
-  switchReasons: string[]
+  differentiators: string[]
   metaTitle: string
   metaDescription: string
 }
@@ -29,63 +31,66 @@ export const comparisons: Comparison[] = [
     slug: 'unterweisung24',
     competitor: 'Unterweisung24.de',
     competitorUrl: 'unterweisung24.de',
-    headline: 'SafeMinds vs. Unterweisung24.de',
-    subline: 'Welche Plattform ist besser für Ihren Betrieb?',
-    intro: 'Beide Plattformen bieten digitale Arbeitsschutz-Unterweisungen. Wir zeigen Ihnen, wo SafeMinds klare Vorteile hat — und warum immer mehr Betriebe wechseln.',
+    headline: 'SafeMinds vs. Unterweisung24',
+    subline: 'Ein ehrlicher Vergleich — ohne Schönfärberei',
+    intro: 'Unterweisung24.de ist eine etablierte Plattform für digitale Arbeitsschutz-Unterweisungen. Beide Anbieter erfüllen die gesetzlichen Anforderungen nach §12 ArbSchG. Der Unterschied liegt im Detail: Zielgruppe, Sprachunterstützung und wie schnell man startklar ist.',
+    competitorStrengths: [
+      'Langjährige Erfahrung im deutschen Arbeitsschutzmarkt',
+      'Breites bestehendes Kursangebot',
+      'Solide rechtssichere Dokumentation',
+    ],
     features: [
       { label: '§12 ArbSchG-konform', safeminds: true, competitor: true },
-      { label: 'Zertifikat direkt nach Abschluss', safeminds: true, competitor: true },
-      { label: 'Mehrsprachig (4+ Sprachen)', safeminds: true, competitor: false },
-      { label: 'Auf Smartphone nutzbar', safeminds: true, competitor: 'Eingeschränkt' },
-      { label: 'Bestanden-Garantie / Wiederholung', safeminds: true, competitor: false },
-      { label: 'Automatische Erinnerungen', safeminds: true, competitor: false },
-      { label: 'DSGVO-konorme Ablage', safeminds: true, competitor: true },
-      { label: 'Branchenspezifische Kurse', safeminds: true, competitor: 'Begrenzt' },
+      { label: 'Zertifikat nach Kursabschluss', safeminds: true, competitor: true },
+      { label: 'DSGVO-konforme Datenhaltung', safeminds: true, competitor: true },
       { label: 'Keine IT-Installation nötig', safeminds: true, competitor: true },
-      { label: 'In 3 Minuten startklar', safeminds: true, competitor: false },
       { label: 'Made in Germany', safeminds: true, competitor: true },
+      { label: 'Auf Smartphone nutzbar', safeminds: true, competitor: 'Eingeschränkt', note: 'SafeMinds wurde von Anfang an für Mobilgeräte entwickelt' },
+      { label: 'Mehrsprachig (4+ Sprachen)', safeminds: true, competitor: false, note: 'Für Teams mit internationalen Mitarbeitenden relevant' },
+      { label: 'Bestanden-Garantie mit Wiederholung', safeminds: true, competitor: false },
+      { label: 'Automatische Erinnerungen', safeminds: true, competitor: false },
+      { label: 'Sofort startklar (< 5 Min.)', safeminds: true, competitor: 'Aufwändiger', note: 'Unterweisung24 erfordert mehr Einrichtungszeit' },
     ],
     benefits: [
       {
         icon: '🌍',
-        title: 'Mehrsprachig ohne Aufpreis',
-        desc: 'SafeMinds unterweist in Deutsch, Polnisch, Türkisch, Rumänisch und weiteren Sprachen. Kein Dolmetscher, keine Extra-Kosten — jeder Mitarbeiter versteht, was er tun muss.',
+        title: 'Mehrsprachig — für gemischte Teams',
+        desc: 'In vielen Betrieben sprechen nicht alle Mitarbeitenden fließend Deutsch. SafeMinds bietet Unterweisungen auf Deutsch, Polnisch, Türkisch, Rumänisch und weiteren Sprachen — ohne Aufpreis.',
       },
       {
         icon: '✅',
         title: 'Bestanden-Garantie',
-        desc: 'Bei falschen Antworten zeigt SafeMinds sofort die richtige Lösung und wiederholt die Frage. Nahezu 100 % Abschlussquote — auch bei Mitarbeitenden mit wenig Erfahrung.',
+        desc: 'Wer eine Frage falsch beantwortet, bekommt sofort die Erklärung und kann die Frage wiederholen. Das sorgt für echtes Verstehen — nicht nur für ein Abhaken.',
       },
       {
         icon: '📱',
-        title: 'Wirklich mobilfähig',
-        desc: 'SafeMinds wurde von Grund auf für Smartphones entwickelt. Kein Desktop nötig — ideal für Baustellen, Schichtbetrieb und Außendienst.',
+        title: 'Entwickelt für Smartphones',
+        desc: 'Wer auf einer Baustelle, im Lager oder im Schichtbetrieb arbeitet, hat selten einen Desktop. SafeMinds funktioniert vollständig auf jedem Smartphone — ohne App-Download.',
       },
       {
         icon: '⚡',
-        title: 'In 3 Minuten einsatzbereit',
-        desc: 'Kein IT-Projekt, keine Schulung für Administratoren. Konto erstellen, Mitarbeitenden einladen — fertig. Erste Unterweisung noch am gleichen Tag.',
+        title: 'Schneller Einstieg',
+        desc: 'Konto erstellen, Mitarbeitenden einladen — erste Unterweisung noch am selben Tag. Kein IT-Projekt, keine Schulung für Administratoren.',
       },
       {
         icon: '🔔',
-        title: 'Automatische Wiederholungs-Erinnerungen',
-        desc: 'SafeMinds erinnert Ihre Mitarbeitenden automatisch, wenn eine Unterweisung zur Wiederholung fällig ist. Kein manuelles Nachfassen mehr.',
+        title: 'Automatische Erinnerungen',
+        desc: 'SafeMinds erinnert Ihre Mitarbeitenden selbstständig, wenn eine Unterweisung zur Wiederholung fällig ist. Kein manuelles Nachfassen nötig.',
       },
       {
         icon: '🏭',
-        title: 'Branchenspezifisch',
-        desc: 'Kurse für Bau, Pflege, Produktion, Logistik, Gastronomie und Büro — zugeschnitten auf die tatsächlichen Gefährdungen in Ihrer Branche.',
+        title: 'Branchenspezifisch aufgebaut',
+        desc: 'Die Kurse sind nicht generisch — sie sind auf konkrete Gefährdungen in Bau, Pflege, Produktion, Logistik und Gastronomie zugeschnitten.',
       },
     ],
-    switchReasons: [
-      'Mehrsprachige Teams können endlich ohne Dolmetscher unterwiesen werden',
-      'Mitarbeitende auf dem Smartphone unterweisen — ohne Desktop oder Büro',
-      'Weniger Verwaltungsaufwand durch automatische Erinnerungen',
-      'Günstigerer Einstieg für kleine und mittlere Betriebe',
-      'Persönlicher Support statt anonymes Ticket-System',
+    differentiators: [
+      'Besonders geeignet für Betriebe mit mehrsprachigen Mitarbeitenden',
+      'Besonders geeignet für mobile Belegschaften ohne festen Büroarbeitsplatz',
+      'Schnellerer Einstieg ohne Einrichtungsaufwand',
+      'Automatisierte Erinnerungen reduzieren den Verwaltungsaufwand',
     ],
-    metaTitle: 'SafeMinds vs. Unterweisung24 — Vergleich 2025',
-    metaDescription: 'SafeMinds oder Unterweisung24? Wir vergleichen Funktionen, Sprachen, Mobilfähigkeit und Preis. Finden Sie die bessere Lösung für Ihren Betrieb.',
+    metaTitle: 'SafeMinds vs. Unterweisung24 — ehrlicher Vergleich 2025',
+    metaDescription: 'SafeMinds oder Unterweisung24? Beide erfüllen §12 ArbSchG. Wir zeigen, wo die echten Unterschiede liegen — bei Sprache, Mobilfähigkeit und Einstieg.',
   },
 ]
 
