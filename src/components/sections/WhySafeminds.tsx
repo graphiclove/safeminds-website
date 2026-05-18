@@ -58,7 +58,7 @@ const features = [
 export function WhySafeminds() {
   return (
     <section className="py-24" style={{ background: '#f8fafc' }}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Warum SafeMinds</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">

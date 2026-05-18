@@ -34,7 +34,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <section className="py-24" style={{ background: '#f8fafc' }}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-[2rem] sm:text-[2.25rem] font-extrabold text-[#0f172a] leading-tight">
             So kommen Sie heute zum Zertifikat
