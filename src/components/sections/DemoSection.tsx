@@ -9,7 +9,7 @@ export function DemoSection() {
         strategy="lazyOnload"
         data-verify-origin=""
       />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="demo" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-sm font-semibold text-blue-300 uppercase tracking-wider mb-3">Produktdemo</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
