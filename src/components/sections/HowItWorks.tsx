@@ -44,21 +44,21 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-6">
           {steps.map(step => (
             <div
               key={step.title}
-              className="bg-white rounded-2xl p-7 border border-[#e8edf2] flex flex-col"
+              className="bg-white rounded-2xl p-8 border border-[#e8edf2] flex flex-col"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 flex-shrink-0"
                 style={{ background: '#eef2f7' }}
               >
                 {step.icon}
               </div>
-              <h3 className="font-semibold text-[#0f172a] text-[0.9rem] mb-2 leading-snug">{step.title}</h3>
-              <p className="text-[0.85rem] text-[#64748b] leading-relaxed flex-1">{step.desc}</p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-[0.75rem] font-medium text-green-700">
+              <h3 className="font-bold text-[#0f172a] text-base mb-2.5 leading-snug">{step.title}</h3>
+              <p className="text-sm text-[#64748b] leading-relaxed flex-1">{step.desc}</p>
+              <div className="mt-6 inline-flex items-center gap-1.5 text-xs font-medium text-green-700">
                 <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
