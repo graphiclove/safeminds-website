@@ -4,30 +4,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { courses, CATEGORIES } from '@/data/courses'
 
-const CATEGORY_META: Record<string, { icon: string }> = {
-  'Grundlagen':           { icon: '📋' },
-  'Gesundheit & PSA':     { icon: '🦺' },
-  'Arbeitsmittel':        { icon: '🔧' },
-  'Fahrzeuge & Maschinen':{ icon: '🚜' },
-  'Gefahrstoffe':         { icon: '⚠️' },
-  'Spezialarbeiten':      { icon: '⛏️' },
-}
-
 export default function KursePage() {
   const [activeCategory, setActiveCategory] = useState('Alle')
 
-  const filteredCourses = activeCategory === 'Alle'
+  const filtered = activeCategory === 'Alle'
     ? courses
     : courses.filter((c) => c.category === activeCategory)
 
   const available = courses.filter((c) => c.status === 'verfügbar').length
-
-  const categoriesWithCourses = CATEGORIES.filter((c) => c !== 'Alle').map((cat) => ({
-    name: cat,
-    meta: CATEGORY_META[cat],
-    courses: courses.filter((c) => c.category === cat),
-    available: courses.filter((c) => c.category === cat && c.status === 'verfügbar').length,
-  }))
 
   return (
     <main style={{ background: '#f8fafc' }} className="min-h-screen py-16 px-4">
@@ -68,108 +52,47 @@ export default function KursePage() {
           ))}
         </div>
 
-        {/* CATEGORY OVERVIEW — shown when "Alle" is active */}
-        {activeCategory === 'Alle' && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-            {categoriesWithCourses.map(({ name, meta, courses: catCourses, available: catAvail }) => {
-              const preview = catCourses.filter((c) => c.status === 'verfügbar').slice(0, 3)
-              const remaining = catAvail - preview.length
-
-              return (
-                <button
-                  key={name}
-                  onClick={() => setActiveCategory(name)}
-                  className="bg-white rounded-2xl p-8 border border-[#e8edf2] flex flex-col text-left hover:shadow-md hover:border-[#bfdbfe] transition-all group"
-                >
-                  {/* Icon box + count */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                      style={{ background: '#eef2f7' }}
-                    >
-                      {meta.icon}
-                    </div>
-                    <span className="text-xs font-semibold text-[#3b82f6] bg-[#eff6ff] px-2.5 py-1 rounded-full">
-                      {catCourses.length} Kurse
+        {/* Course cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {filtered.map((course) => (
+            <div
+              key={course.slug}
+              className={`bg-white rounded-2xl p-6 border transition-all hover:shadow-md ${
+                course.status === 'verfügbar'
+                  ? 'border-[#e8edf2] hover:border-[#bfdbfe]'
+                  : 'border-dashed border-[#e2e8f0] opacity-70'
+              }`}
+            >
+              <div className="flex items-start justify-between gap-2 mb-3">
+                <span className="text-xs font-semibold text-[#3b82f6] bg-[#eff6ff] px-2.5 py-1 rounded-full">
+                  {course.category}
+                </span>
+                <div className="flex items-center gap-2 shrink-0">
+                  {course.status === 'produktion' && (
+                    <span className="text-xs bg-amber-50 text-amber-700 font-semibold px-2 py-0.5 rounded-full border border-amber-200">
+                      Bald verfügbar
                     </span>
-                  </div>
-
-                  {/* Category title */}
-                  <h2 className="font-extrabold text-[#0f172a] text-base mb-4 leading-snug">
-                    {name}
-                  </h2>
-
-                  {/* Course list */}
-                  <ul className="space-y-2 flex-1 mb-5">
-                    {preview.map((course) => (
-                      <li key={course.slug} className="flex items-start gap-2 text-sm text-[#334155]">
-                        <svg
-                          className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#3b82f6]"
-                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        <span className="leading-snug">{course.title}</span>
-                      </li>
-                    ))}
-                    {remaining > 0 && (
-                      <li className="text-xs text-[#94a3b8] pl-6">+ {remaining} weitere Kurse</li>
-                    )}
-                  </ul>
-
-                  {/* CTA */}
-                  <span className="text-sm font-semibold text-[#3b82f6] group-hover:text-[#1d4ed8] transition-colors">
-                    Kurse ansehen →
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-        )}
-
-        {/* INDIVIDUAL COURSE CARDS — shown when a category is filtered */}
-        {activeCategory !== 'Alle' && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-            {filteredCourses.map((course) => (
-              <div
-                key={course.slug}
-                className={`bg-white rounded-2xl p-5 border transition-all hover:shadow-md ${
-                  course.status === 'verfügbar'
-                    ? 'border-[#e2e8f0] hover:border-[#bfdbfe]'
-                    : 'border-dashed border-[#e2e8f0] opacity-70'
-                }`}
-              >
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <span className="text-xs font-semibold bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-full">
-                    {course.category}
-                  </span>
-                  <div className="flex items-center gap-2 shrink-0">
-                    {course.status === 'produktion' && (
-                      <span className="text-xs bg-amber-50 text-amber-700 font-semibold px-2 py-0.5 rounded-full border border-amber-200">
-                        Bald verfügbar
-                      </span>
-                    )}
-                    <span className="text-xs text-[#94a3b8]">⏱ {course.duration}</span>
-                  </div>
+                  )}
+                  <span className="text-xs text-[#94a3b8]">⏱ {course.duration}</span>
                 </div>
-                <h2 className="font-semibold text-[#0f172a] mb-2 leading-snug text-sm">
-                  {course.title}
-                </h2>
-                <p className="text-xs text-[#64748b] leading-relaxed mb-4">{course.description}</p>
-                {course.status === 'verfügbar' ? (
-                  <Link
-                    href="/testen"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[#1d4ed8] hover:text-[#1e3a8a] transition-colors"
-                  >
-                    Kostenlos testen →
-                  </Link>
-                ) : (
-                  <span className="text-xs text-[#94a3b8]">In Produktion</span>
-                )}
               </div>
-            ))}
-          </div>
-        )}
+              <h2 className="font-bold text-[#0f172a] mb-2 leading-snug text-sm">
+                {course.title}
+              </h2>
+              <p className="text-xs text-[#64748b] leading-relaxed mb-4">{course.description}</p>
+              {course.status === 'verfügbar' ? (
+                <Link
+                  href="/testen"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-[#3b82f6] hover:text-[#1d4ed8] transition-colors"
+                >
+                  Kostenlos testen →
+                </Link>
+              ) : (
+                <span className="text-xs text-[#94a3b8]">In Produktion</span>
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Bottom CTA */}
         <div
