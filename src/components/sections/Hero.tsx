@@ -1,102 +1,233 @@
-import { TrialForm } from '@/components/forms/TrialForm'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export function Hero() {
   return (
-    <section className="relative bg-white pt-16 pb-24 overflow-hidden">
-      {/* Hintergrund-Akzent */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-50 blur-3xl opacity-60 translate-x-1/3 -translate-y-1/4" />
-      </div>
+    <section
+      className="relative pt-20 pb-28 sm:pt-8 sm:pb-16"
+      style={{ background: 'linear-gradient(180deg, #ffffff 0%, #eff6ff 100%)' }}
+    >
+      {/* Decorative radial gradient — top right */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: '-100px',
+          right: '-100px',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 70%)',
+        }}
+      />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6">
+        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-16 items-center">
 
-          {/* Linke Spalte — Text + CTAs */}
-          <div className="flex flex-col gap-6">
-            {/* Badge */}
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-50 border border-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700">
-              <span className="h-2 w-2 rounded-full bg-blue-500" />
-              §12 ArbSchG-konform · DGUV V2
-            </span>
+          {/* ===== LEFT COLUMN: TEXT ===== */}
+          <div style={{ maxWidth: '580px' }}>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-gray-900 leading-tight tracking-tight">
-              Online-Unterweisung{' '}
-              <span className="text-blue-600">Arbeitssicherheit</span>{' '}
-              — rechtssicher in unter&nbsp;10&nbsp;Minuten.
+            {/* Pill badges */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                { check: true, text: '§12 ArbSchG-konform' },
+                { check: true, text: 'DSGVO' },
+                { check: false, text: '🇩🇪 Made in Germany' },
+              ].map((b) => (
+                <span
+                  key={b.text}
+                  className="inline-flex items-center gap-1.5 bg-white border border-[#dbeafe] text-[#1e3a8a] px-3.5 py-1.5 rounded-full text-xs font-semibold"
+                  style={{ boxShadow: 'var(--sm-shadow-sm)' }}
+                >
+                  {b.check && <span className="font-extrabold text-[#1d4ed8]">✓</span>}
+                  {b.text}
+                </span>
+              ))}
+            </div>
+
+            {/* H1 */}
+            <h1
+              className="font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0f172a] mb-6"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}
+            >
+              Die Online-Unterweisung, die{' '}
+              <span className="text-[#1d4ed8]">Ihren Betrieb</span>{' '}
+              wirklich absichert.
             </h1>
 
-            {/* Subline */}
-            <p className="text-lg text-gray-600 max-w-lg">
-              Video + Wissenstest + Zertifikat in einem Durchlauf.
-              Für Betriebe ab 5 Mitarbeitende — automatisch dokumentiert, kein Papierkram.
+            {/* Subtitle */}
+            <p className="text-[1.15rem] leading-[1.6] text-[#334155] mb-8">
+              Rechtssichere Arbeitsschutz-Unterweisungen nach §12 ArbSchG.
+              Video, Wissenstest, Zertifikat — in unter 10 Minuten pro Mitarbeiter.
             </p>
 
-            {/* Trust-Punkte */}
-            <ul className="flex flex-col gap-2">
-              {[
-                'Bestanden-Garantie — jede:r schließt erfolgreich ab',
-                'Mehrsprachig — Polnisch, Türkisch, Rumänisch u.v.m.',
-                'Zertifikat sofort als PDF — revisionssicher archiviert',
-              ].map(point => (
-                <li key={point} className="flex items-center gap-2 text-gray-700 text-sm">
-                  <svg className="h-4 w-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {point}
-                </li>
-              ))}
-            </ul>
-
-            {/* Trial-Formular */}
-            <div className="mt-2">
-              <TrialForm formSource="hero-trial" />
-            </div>
-
-            {/* Sekundärer CTA */}
-            <div className="flex items-center gap-4 mt-1">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <Link
-                href="/kontakt"
-                className="text-sm font-medium text-blue-600 hover:text-blue-700 underline underline-offset-2"
+                href="/testen"
+                className="inline-flex items-center justify-center gap-2 bg-[#1d4ed8] text-white font-bold text-base px-7 rounded-[10px] transition-all hover:bg-[#1e3a8a] hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#1d4ed8] focus-visible:ring-offset-2"
+                style={{
+                  padding: '0.95rem 1.75rem',
+                  boxShadow: '0 4px 12px rgba(29,78,216,0.3)',
+                }}
               >
-                Demo anfragen →
+                Jetzt kostenlos testen →
               </Link>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm text-gray-400">Über 200 Unternehmen vertrauen SafeMinds</span>
+              <Link
+                href="#demo"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] font-semibold text-base rounded-[10px] border border-[#e2e8f0] transition-all hover:border-[#1d4ed8] hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#1d4ed8] focus-visible:ring-offset-2"
+                style={{ padding: '0.95rem 1.75rem' }}
+              >
+                <span className="text-[#1d4ed8] text-sm">▶</span>
+                Demo ansehen
+              </Link>
             </div>
+
+            {/* Disclaimer */}
+            <p className="text-sm text-[#64748b]">
+              Keine Kreditkarte. Keine Installation. Sofort loslegen.
+            </p>
           </div>
 
-          {/* Rechte Spalte — Foto */}
-          <div className="relative hidden lg:flex items-center justify-center">
-            <div className="relative w-full max-w-md">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
+          {/* ===== RIGHT COLUMN: VISUAL COMPOSITION ===== */}
+          <div className="hero-visual">
+            <div className="hero-visual-inner">
+
+              {/* CARD 1: Dashboard — centered, no rotation */}
+              <Link
+                href="/dashboard"
+                aria-label="Dashboard ansehen"
+                className="visual-card animate-float-main absolute overflow-hidden rounded-2xl z-[5]"
+                style={{
+                  width: '540px',
+                  height: '380px',
+                  top: '90px',
+                  left: '50%',
+                  marginLeft: '-270px',
+                  boxShadow: 'var(--sm-shadow-lg)',
+                }}
+              >
                 <Image
-                  src="/images/Fotos Landingpage/portrait-of-railway-technician-worker-in-safety-ve-2024-03-25-23-30-26-utc.jpg"
-                  alt="Mitarbeiterin mit Sicherheitsausrüstung bei der Online-Unterweisung"
-                  width={600}
-                  height={700}
-                  className="w-full h-[480px] object-cover object-center"
+                  src="/images/hero/dashboard.png"
+                  alt="SafeMinds Dashboard — Übersicht aktiver Kurse und Mitarbeitender"
+                  fill
+                  className="object-cover"
+                  sizes="540px"
                   priority
                 />
+              </Link>
+
+              {/* CARD 2: Quiz — top left, -4° */}
+              <Link
+                href="/kurse"
+                aria-label="Quiz-Beispielansicht"
+                className="visual-card animate-float-left absolute overflow-hidden rounded-2xl z-[6]"
+                style={{
+                  width: '260px',
+                  height: '230px',
+                  top: '10px',
+                  left: '0',
+                  boxShadow: 'var(--sm-shadow-lg)',
+                }}
+              >
+                <Image
+                  src="/images/hero/quiz.png"
+                  alt="SafeMinds Wissenstest — interaktive Quiz-Fragen"
+                  fill
+                  className="object-cover"
+                  sizes="260px"
+                />
+              </Link>
+
+              {/* CARD 3: Zertifikat — bottom right, +3° */}
+              <Link
+                href="/kurse#zertifikat"
+                aria-label="Beispiel-Zertifikat"
+                className="visual-card animate-float-right absolute overflow-hidden rounded-2xl z-[6]"
+                style={{
+                  width: '290px',
+                  height: '200px',
+                  bottom: '30px',
+                  right: '0',
+                  boxShadow: 'var(--sm-shadow-lg)',
+                }}
+              >
+                <Image
+                  src="/images/hero/zertifikat.png"
+                  alt="SafeMinds Zertifikat — PDF nach erfolgreichem Kursabschluss"
+                  fill
+                  className="object-cover"
+                  sizes="290px"
+                />
+              </Link>
+
+              {/* BADGE 1: Sprachen — top right */}
+              <div
+                className="animate-float-badge-1 absolute z-[11] bg-white rounded-xl flex items-center gap-2"
+                style={{
+                  top: '30px',
+                  right: '20px',
+                  padding: '0.65rem 0.95rem',
+                  boxShadow: 'var(--sm-shadow-md)',
+                }}
+              >
+                <div
+                  className="w-7 h-7 rounded-[7px] bg-[#eff6ff] flex items-center justify-center text-sm flex-shrink-0"
+                >
+                  🌍
+                </div>
+                <div>
+                  <div className="font-extrabold text-[#1d4ed8] leading-tight" style={{ fontSize: '0.95rem' }}>
+                    &gt; 4 Sprachen
+                  </div>
+                  <div className="text-[#64748b] font-medium mt-0.5" style={{ fontSize: '0.65rem' }}>
+                    für Ihre Mitarbeiter
+                  </div>
+                </div>
               </div>
 
-              {/* Floating Badges */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-2.5">
-                <p className="text-xs text-gray-500">Abschlussquote</p>
-                <p className="text-2xl font-bold text-green-600">98%</p>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-2.5">
-                <p className="text-xs text-gray-500">Zertifikate ausgestellt</p>
-                <p className="text-2xl font-bold text-blue-600">10.000+</p>
+              {/* BADGE 2: Abschlussquote — middle left */}
+              <div
+                className="animate-float-badge-2 absolute z-[11] bg-white rounded-xl"
+                style={{
+                  top: '250px',
+                  left: '-10px',
+                  padding: '0.65rem 0.95rem',
+                  boxShadow: 'var(--sm-shadow-md)',
+                }}
+              >
+                <div className="font-extrabold text-[#1d4ed8] leading-tight" style={{ fontSize: '1.1rem' }}>
+                  98%
+                </div>
+                <div className="text-[#64748b] font-medium mt-0.5" style={{ fontSize: '0.65rem' }}>
+                  Abschlussquote
+                </div>
               </div>
 
-              {/* Zertifikat Badge */}
-              <div className="absolute bottom-12 right-0 translate-x-1/4 bg-blue-600 text-white rounded-xl shadow-xl px-4 py-3 text-center">
-                <p className="text-xs text-blue-200">Abschluss in</p>
-                <p className="text-lg font-bold">unter 10 Min.</p>
+              {/* BADGE 3: DSGVO — bottom left */}
+              <div
+                className="animate-float-badge-3 absolute z-[11] bg-white rounded-xl flex items-center gap-2"
+                style={{
+                  bottom: '30px',
+                  left: '30px',
+                  padding: '0.65rem 0.95rem',
+                  boxShadow: 'var(--sm-shadow-md)',
+                }}
+              >
+                <div
+                  className="w-7 h-7 rounded-[7px] flex items-center justify-center text-sm flex-shrink-0 font-bold text-[#10b981]"
+                  style={{ background: 'rgba(16,185,129,0.1)' }}
+                >
+                  ✓
+                </div>
+                <div>
+                  <div className="font-bold text-[#0f172a] leading-tight" style={{ fontSize: '0.82rem' }}>
+                    DSGVO-konform
+                  </div>
+                  <div className="text-[#64748b] font-medium mt-0.5" style={{ fontSize: '0.65rem' }}>
+                    Zertifikat erstellt
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -105,3 +236,5 @@ export function Hero() {
     </section>
   )
 }
+
+// TODO: Alter Hero — nach Review löschen (TrialForm, Foto-Spalte, Trust-Liste)

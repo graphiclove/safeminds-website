@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { PromoBanner } from '@/components/PromoBanner'
 
 const geist = Geist({
   variable: '--font-geist-sans',
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <html lang="de" className={`${geist.variable} antialiased`}>
         <body className="min-h-screen flex flex-col">
+          <PromoBanner />
           <Header />
           <div className="flex-1">{children}</div>
           <Footer />
