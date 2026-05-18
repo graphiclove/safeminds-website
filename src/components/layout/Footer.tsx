@@ -57,6 +57,10 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Vergleiche</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/vergleich/unterweisung24" className="hover:text-white transition-colors">vs. Unterweisung24</Link></li>
+              <li><Link href="/vergleich/weka" className="hover:text-white transition-colors">vs. WEKA</Link></li>
+              <li><Link href="/vergleich/haufe" className="hover:text-white transition-colors">vs. Haufe</Link></li>
+              <li><Link href="/vergleich/lms" className="hover:text-white transition-colors">vs. LMS-Plattformen</Link></li>
+              <li><Link href="/vergleich/praesenzseminar" className="hover:text-white transition-colors">vs. Präsenzseminar</Link></li>
             </ul>
           </div>
 
