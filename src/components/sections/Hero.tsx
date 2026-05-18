@@ -105,14 +105,16 @@ export function Hero() {
                   boxShadow: 'var(--sm-shadow-lg)',
                 }}
               >
-                <Image
-                  src="/images/hero/dashboard.png"
-                  alt="SafeMinds Dashboard — Übersicht aktiver Kurse und Mitarbeitender"
-                  fill
-                  className="object-cover"
-                  sizes="540px"
-                  priority
-                />
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                  <Image
+                    src="/images/hero/dashboard.png"
+                    alt="SafeMinds Dashboard — Übersicht aktiver Kurse und Mitarbeitender"
+                    fill
+                    className="object-cover"
+                    sizes="540px"
+                    priority
+                  />
+                </div>
               </Link>
 
               {/* CARD 2: Quiz — top left, -4° */}
@@ -128,13 +130,15 @@ export function Hero() {
                   boxShadow: 'var(--sm-shadow-lg)',
                 }}
               >
-                <Image
-                  src="/images/hero/quiz.png"
-                  alt="SafeMinds Wissenstest — interaktive Quiz-Fragen"
-                  fill
-                  className="object-cover"
-                  sizes="260px"
-                />
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                  <Image
+                    src="/images/hero/quiz.png"
+                    alt="SafeMinds Wissenstest — interaktive Quiz-Fragen"
+                    fill
+                    className="object-cover"
+                    sizes="260px"
+                  />
+                </div>
               </Link>
 
               {/* CARD 3: Zertifikat — bottom right, +3° */}
@@ -150,13 +154,15 @@ export function Hero() {
                   boxShadow: 'var(--sm-shadow-lg)',
                 }}
               >
-                <Image
-                  src="/images/hero/zertifikat.png"
-                  alt="SafeMinds Zertifikat — PDF nach erfolgreichem Kursabschluss"
-                  fill
-                  className="object-cover"
-                  sizes="290px"
-                />
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                  <Image
+                    src="/images/hero/zertifikat.png"
+                    alt="SafeMinds Zertifikat — PDF nach erfolgreichem Kursabschluss"
+                    fill
+                    className="object-cover"
+                    sizes="290px"
+                  />
+                </div>
               </Link>
 
               {/* BADGE 1: Sprachen — top right */}
