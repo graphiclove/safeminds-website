@@ -83,20 +83,20 @@ body {
 /* ===== HERO VISUAL — RESPONSIVE SCALING ===== */
 .hero-visual {
   position: relative;
-  height: 400px;
+  height: 420px;
 }
 .hero-visual-inner {
   transform-origin: top center;
-  transform: scale(0.65);
+  transform: scale(0.6);
   position: relative;
-  height: 560px;
+  height: 620px;
 }
 @media (min-width: 640px) {
-  .hero-visual { height: 480px; }
-  .hero-visual-inner { transform: scale(0.85); }
+  .hero-visual { height: 500px; }
+  .hero-visual-inner { transform: scale(0.8); }
 }
 @media (min-width: 1024px) {
-  .hero-visual { height: 560px; }
+  .hero-visual { height: 620px; }
   .hero-visual-inner { transform: scale(1); }
 }
 
