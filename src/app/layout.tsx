@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="de" className={`${geist.variable} antialiased`}>
+      <html lang="de" className={`${geist.variable} antialiased`} suppressHydrationWarning>
         <body className="min-h-screen flex flex-col">
           <PromoBanner />
           <Header />
