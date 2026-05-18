@@ -1,8 +1,6 @@
 import Link from 'next/link'
 
-// Replace ARCADE_EMBED_URL with your Arcade.software embed link
-// Create free at: https://arcade.software
-const ARCADE_EMBED_URL = 'https://demo.arcade.software/0xPZbOJULhg8dFw1Y0y6?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true'
+const ARCADE_URL = 'https://app.arcade.software/share/0xPZbOJULhg8dFw1Y0y6'
 
 export function DemoSection() {
   return (
@@ -18,33 +16,36 @@ export function DemoSection() {
           </p>
         </div>
 
-        {/* Demo embed or placeholder */}
-        <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-blue-800">
-          {ARCADE_EMBED_URL ? (
-            <iframe
-              src={ARCADE_EMBED_URL}
-              title="SafeMinds Demo"
-              className="w-full aspect-video"
-              allowFullScreen
-            />
-          ) : (
-            /* Placeholder until Arcade is set up */
-            <div className="aspect-video bg-blue-900 flex flex-col items-center justify-center gap-4 border-2 border-dashed border-blue-700">
-              <div className="text-5xl">▶</div>
-              <p className="text-blue-200 font-semibold text-lg">Interaktive Demo</p>
-              <p className="text-blue-400 text-sm max-w-xs text-center">
-                Demo wird eingebettet via Arcade.software.<br />
-                Erstellen unter: arcade.software
-              </p>
-              <Link
-                href="/testen"
-                className="mt-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors"
-              >
-                Jetzt kostenlos testen →
-              </Link>
+        {/* Demo card — opens in new tab */}
+        <a
+          href={ARCADE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group max-w-4xl mx-auto block rounded-2xl overflow-hidden shadow-2xl border border-blue-800 hover:border-blue-500 transition-colors"
+        >
+          <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-950 flex flex-col items-center justify-center gap-5 relative">
+            {/* Play button */}
+            <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+              <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
             </div>
-          )}
-        </div>
+            <div className="text-center">
+              <p className="text-white font-bold text-lg">Interaktive Demo starten</p>
+              <p className="text-blue-300 text-sm mt-1">Öffnet in neuem Tab · Kein Login nötig</p>
+            </div>
+            {/* Steps preview */}
+            <div className="absolute bottom-6 flex gap-3">
+              {['Login', 'Kursübersicht', 'Unterweisung', 'Zertifikat'].map((s, i) => (
+                <div key={s} className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">{i+1}</span>
+                  <span className="text-blue-300 text-xs hidden sm:block">{s}</span>
+                  {i < 3 && <span className="text-blue-700 text-xs hidden sm:block">›</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </a>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <Link
