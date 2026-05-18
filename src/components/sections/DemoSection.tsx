@@ -7,6 +7,7 @@ export function DemoSection() {
       <Script
         src="https://js.storylane.io/js/v2/storylane.js"
         strategy="lazyOnload"
+        data-verify-origin=""
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
@@ -33,7 +34,7 @@ export function DemoSection() {
             <iframe
               loading="lazy"
               className="sl-demo"
-              src="https://app.storylane.io/demo/kgjcarufxclp?embed=inline"
+              src="https://app.storylane.io/demo/xjzj3vjkasrf?embed=inline"
               name="sl-embed"
               allow="fullscreen"
               allowFullScreen
