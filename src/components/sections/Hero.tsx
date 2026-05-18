@@ -91,15 +91,15 @@ export function Hero() {
           <div className="hero-visual overflow-visible">
             <div className="hero-visual-inner">
 
-              {/* CARD 1: Dashboard — groß, zentriert, dominant */}
+              {/* CARD 1: Dashboard — dominant, viel sichtbar */}
               <div
                 className="visual-card-main animate-float-main absolute overflow-hidden rounded-xl z-[5]"
                 style={{
-                  width: '600px',
-                  height: '430px',
-                  top: '80px',
+                  width: '650px',
+                  height: '480px',
+                  top: '60px',
                   left: '50%',
-                  marginLeft: '-240px',
+                  marginLeft: '-220px',
                   boxShadow: 'var(--sm-shadow-lg)',
                 }}
               >
@@ -109,20 +109,20 @@ export function Hero() {
                     alt="SafeMinds Dashboard — Übersicht aktiver Kurse und Mitarbeitender"
                     fill
                     className="object-cover object-top"
-                    sizes="600px"
+                    sizes="650px"
                     priority
                   />
                 </div>
               </div>
 
-              {/* CARD 2: Quiz — oben links, größer, leicht überlappend */}
+              {/* CARD 2: Quiz — kleiner, auf Fragen gezoomt */}
               <Link
                 href="#demo"
                 aria-label="Produktdemo ansehen"
                 className="visual-card animate-float-left absolute overflow-hidden rounded-xl z-[7]"
                 style={{
-                  width: '320px',
-                  height: '280px',
+                  width: '250px',
+                  height: '210px',
                   top: '0',
                   left: '-10px',
                   boxShadow: 'var(--sm-shadow-lg)',
@@ -133,22 +133,23 @@ export function Hero() {
                     src="/images/hero/quiz.png"
                     alt="SafeMinds Wissenstest — interaktive Quiz-Fragen"
                     fill
-                    className="object-cover object-top"
-                    sizes="320px"
+                    className="object-cover"
+                    style={{ objectPosition: 'center 35%' }}
+                    sizes="250px"
                   />
                 </div>
               </Link>
 
-              {/* CARD 3: Zertifikat — unten rechts, größer, läuft aus */}
+              {/* CARD 3: Zertifikat — kleiner, unten rechts */}
               <Link
                 href="#zertifikat"
                 aria-label="Mehr über Zertifikate"
                 className="visual-card animate-float-right absolute overflow-hidden rounded-xl z-[7]"
                 style={{
-                  width: '360px',
-                  height: '250px',
-                  bottom: '20px',
-                  right: '-30px',
+                  width: '280px',
+                  height: '190px',
+                  bottom: '30px',
+                  right: '-20px',
                   boxShadow: 'var(--sm-shadow-lg)',
                 }}
               >
@@ -158,7 +159,7 @@ export function Hero() {
                     alt="SafeMinds Zertifikat — PDF nach erfolgreichem Kursabschluss"
                     fill
                     className="object-cover object-top"
-                    sizes="360px"
+                    sizes="280px"
                   />
                 </div>
               </Link>
