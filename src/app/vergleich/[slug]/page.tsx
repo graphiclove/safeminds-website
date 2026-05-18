@@ -111,6 +111,9 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
               </div>
             ))}
           </div>
+          <p className="text-xs text-[#94a3b8] text-center mt-4 max-w-2xl mx-auto leading-relaxed">
+            Angaben zu Drittanbietern basieren ausschließlich auf öffentlich zugänglichen Informationen (Stand: 2025). „—" bedeutet: nicht öffentlich bestätigt. Für Vollständigkeit und Aktualität wird keine Gewähr übernommen.
+          </p>
         </section>
 
         {/* ── BENEFITS ── */}
@@ -227,5 +230,16 @@ function FeatureValue({ value, highlight = false }: { value: boolean | string; h
       </span>
     )
   }
-  return <span className="text-xs font-medium text-[#94a3b8] text-center leading-snug max-w-[80px]">{value}</span>
+  // '—' = not publicly confirmed — shown as neutral dash with tooltip hint
+  if (value === '—') {
+    return (
+      <span
+        className="text-sm font-semibold text-[#cbd5e1]"
+        title="Nicht öffentlich bestätigt"
+      >
+        —
+      </span>
+    )
+  }
+  return <span className="text-xs font-medium text-[#64748b] text-center leading-snug max-w-[90px]">{value}</span>
 }
