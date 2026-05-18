@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
-const ARCADE_URL = 'https://app.arcade.software/share/0xPZbOJULhg8dFw1Y0y6'
+// TODO: Loom-Video-URL hier eintragen sobald Aufnahme fertig
+// z.B. 'https://www.loom.com/embed/DEINE-VIDEO-ID'
+const LOOM_EMBED_URL = ''
 
 export function DemoSection() {
   return (
@@ -12,40 +14,59 @@ export function DemoSection() {
             Sehen Sie SafeMinds in Aktion
           </h2>
           <p className="text-blue-200 max-w-lg mx-auto">
-            Klicken Sie sich durch — so sieht es für Ihren Mitarbeiter aus: Login, Kurs, Zertifikat in unter 10 Minuten.
+            Login, Kurs starten, Zertifikat — alles in unter 10 Minuten. Wir zeigen es Ihnen live.
           </p>
         </div>
 
-        {/* Demo card — opens in new tab */}
-        <a
-          href={ARCADE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group max-w-4xl mx-auto block rounded-2xl overflow-hidden shadow-2xl border border-blue-800 hover:border-blue-500 transition-colors"
-        >
-          <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-950 flex flex-col items-center justify-center gap-5 relative">
-            {/* Play button */}
-            <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-              <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
+        {/* Loom embed or CTA */}
+        <div className="max-w-4xl mx-auto">
+          {LOOM_EMBED_URL ? (
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-blue-800 aspect-video">
+              <iframe
+                src={LOOM_EMBED_URL}
+                title="SafeMinds Demo"
+                className="w-full h-full"
+                allowFullScreen
+              />
             </div>
-            <div className="text-center">
-              <p className="text-white font-bold text-lg">Interaktive Demo starten</p>
-              <p className="text-blue-300 text-sm mt-1">Öffnet in neuem Tab · Kein Login nötig</p>
-            </div>
-            {/* Steps preview */}
-            <div className="absolute bottom-6 flex gap-3">
-              {['Login', 'Kursübersicht', 'Unterweisung', 'Zertifikat'].map((s, i) => (
-                <div key={s} className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">{i+1}</span>
-                  <span className="text-blue-300 text-xs hidden sm:block">{s}</span>
-                  {i < 3 && <span className="text-blue-700 text-xs hidden sm:block">›</span>}
+          ) : (
+            <div className="rounded-2xl border border-blue-800 bg-blue-900/40 p-12 flex flex-col sm:flex-row items-center gap-10">
+              {/* Steps */}
+              <div className="flex flex-col gap-5 flex-1">
+                {[
+                  { n: '01', title: 'Login', desc: 'Mitarbeiter öffnet den Link — keine App nötig.' },
+                  { n: '02', title: 'Kurs starten', desc: 'Video-Unterweisung + Wissenstest.' },
+                  { n: '03', title: 'Zertifikat', desc: 'PDF sofort nach Abschluss — automatisch archiviert.' },
+                ].map(step => (
+                  <div key={step.n} className="flex items-start gap-4">
+                    <span className="w-9 h-9 rounded-xl bg-blue-600 text-white text-sm font-extrabold flex items-center justify-center shrink-0">
+                      {step.n}
+                    </span>
+                    <div>
+                      <p className="text-white font-bold text-sm">{step.title}</p>
+                      <p className="text-blue-300 text-sm">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* CTA */}
+              <div className="flex flex-col items-center gap-4 shrink-0">
+                <div className="w-24 h-24 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
                 </div>
-              ))}
+                <Link
+                  href="/kontakt"
+                  className="bg-white text-blue-900 font-bold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors text-sm text-center"
+                >
+                  Live-Demo anfragen
+                </Link>
+                <p className="text-blue-400 text-xs text-center">Persönlich · 20 Min. · kostenlos</p>
+              </div>
             </div>
-          </div>
-        </a>
+          )}
+        </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <Link
