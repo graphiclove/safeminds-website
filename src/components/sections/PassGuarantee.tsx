@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Icon, type IconName } from '@/components/ui/Icon'
 
 export function PassGuarantee() {
   return (
@@ -43,23 +44,23 @@ export function PassGuarantee() {
             <div className="space-y-5">
               {[
                 {
-                  icon: '📄',
+                  icon: 'file-text' as IconName,
                   title: 'PDF-Zertifikat sofort verfügbar',
                   text: 'Nach Kursabschluss automatisch generiert und per E-Mail zugestellt.',
                 },
                 {
-                  icon: '🗂️',
+                  icon: 'folder' as IconName,
                   title: 'Digitales Archiv für die Prüfung',
                   text: 'Alle Nachweise zentral gespeichert — revisionssicher nach §12 ArbSchG und DGUV V2.',
                 },
                 {
-                  icon: '🔔',
+                  icon: 'bell' as IconName,
                   title: 'Automatische Erinnerungen',
                   text: 'Rechtzeitige Hinweise, wenn Unterweisungen erneuert werden müssen.',
                 },
               ].map((item) => (
                 <div key={item.title} className="flex gap-4">
-                  <div className="text-2xl shrink-0">{item.icon}</div>
+                  <div className="shrink-0 text-[#1d4ed8]"><Icon name={item.icon} size={24} /></div>
                   <div>
                     <div className="font-semibold text-gray-900 mb-1">{item.title}</div>
                     <div className="text-sm text-gray-600">{item.text}</div>

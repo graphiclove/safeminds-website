@@ -25,7 +25,6 @@ export function PromoBanner() {
       style={{ background: 'linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%)' }}
     >
       <div className="flex items-center gap-2">
-        <span>🎁</span>
         <span>14 Tage kostenlos — ohne Kreditkarte, ohne Vertragsbindung</span>
       </div>
       <Link

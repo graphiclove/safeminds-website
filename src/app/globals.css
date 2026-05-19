@@ -123,6 +123,65 @@ body {
   box-shadow: var(--sm-shadow-xl) !important;
 }
 
+/* ===== UNTERNEHMENSFILM — FLOAT ANIMATIONS ===== */
+@keyframes floatVideo {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-4px); }
+}
+@keyframes floatBadge1 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes floatBadge2 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes floatBadge3 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes floatBadge4 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+@keyframes floatBadge5 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes floatBadge6 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@layer utilities {
+  .animate-float-video { animation: floatVideo  8s   ease-in-out infinite; }
+  .animate-float-b1    { animation: floatBadge1 7s   ease-in-out infinite; }
+  .animate-float-b2    { animation: floatBadge2 8s   ease-in-out infinite; animation-delay: -2s; }
+  .animate-float-b3    { animation: floatBadge3 7.5s ease-in-out infinite; animation-delay: -3.5s; }
+  .animate-float-b4    { animation: floatBadge4 7.2s ease-in-out infinite; animation-delay: -1s; }
+  .animate-float-b5    { animation: floatBadge5 8.5s ease-in-out infinite; animation-delay: -2.5s; }
+  .animate-float-b6    { animation: floatBadge6 7.8s ease-in-out infinite; animation-delay: -4s; }
+}
+
+/* ===== UNTERNEHMENSFILM — BADGE HOVER ===== */
+.badge-card {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+@media (hover: hover) {
+  .badge-card:hover {
+    z-index: 20 !important;
+    transform: translateY(-8px) rotate(0deg) !important;
+  }
+  .badge-card:hover .badge-float {
+    animation-play-state: paused;
+  }
+}
+.badge-card:focus-within {
+  z-index: 20 !important;
+  transform: translateY(-8px) rotate(0deg) !important;
+}
+
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
   .animate-float-main,
@@ -130,7 +189,14 @@ body {
   .animate-float-right,
   .animate-float-badge-1,
   .animate-float-badge-2,
-  .animate-float-badge-3 {
+  .animate-float-badge-3,
+  .animate-float-video,
+  .animate-float-b1,
+  .animate-float-b2,
+  .animate-float-b3,
+  .animate-float-b4,
+  .animate-float-b5,
+  .animate-float-b6 {
     animation: none;
   }
 }

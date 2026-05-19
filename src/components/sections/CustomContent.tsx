@@ -1,13 +1,13 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function CustomContent() {
   return (
-    <section className="py-20 bg-blue-900 text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-blue-900 text-white overflow-hidden">
 
-        {/* Philosophie-Video Feature */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-          <div>
+        {/* Philosophie-Video Feature — full-bleed right */}
+        <div className="grid lg:grid-cols-2 items-center mb-24">
+          <div className="px-4 sm:px-6 lg:pl-[max(2rem,calc((100vw-72rem)/2+2rem))] lg:pr-12 py-8 lg:py-0">
             <p className="text-sm font-semibold text-blue-300 uppercase tracking-wider mb-3">
               Exklusiv bei SafeMinds
             </p>
@@ -41,80 +41,36 @@ export function CustomContent() {
             </Link>
           </div>
 
-          <div className="relative">
-            <div className="bg-blue-800 rounded-2xl p-8 border border-blue-700">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-blue-900 font-bold text-sm">IHR</span>
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Müller Bau GmbH</div>
-                  <div className="text-xs text-blue-400">Kursübersicht · Mitarbeiterportal</div>
-                </div>
-              </div>
-              {/* Philosophy video */}
-              <div className="bg-blue-950 rounded-xl p-4 mb-4 border border-blue-700">
-                <div className="text-xs text-blue-400 mb-2 uppercase tracking-wider">Willkommen bei uns</div>
-                <div className="aspect-video bg-gradient-to-br from-blue-800 to-blue-950 rounded-lg flex items-center justify-center mb-2">
-                  <div className="text-center">
-                    <div className="text-3xl mb-1">▶️</div>
-                    <div className="text-xs text-blue-300">Unsere Werte · 3 Min.</div>
-                  </div>
-                </div>
-                <p className="text-xs text-blue-300 italic">"Wer wir sind, was uns antreibt — für alle neuen Kollegen"</p>
-              </div>
-              <div className="flex gap-2 text-xs text-blue-400">
-                <span className="bg-blue-700 rounded-full px-3 py-1">🎬 Ihr Branding</span>
-                <span className="bg-blue-700 rounded-full px-3 py-1">🌍 Mehrsprachig</span>
-                <span className="bg-blue-700 rounded-full px-3 py-1">✓ Nur bei SafeMinds</span>
-              </div>
-            </div>
-            <div className="absolute -top-4 -right-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-              Nur bei SafeMinds
-            </div>
+          <div>
+            <Image
+              src="/images/Unternehmensfilm/Komposition-nobg.png"
+              alt="Unternehmensfilm-Komposition: Video-Mockup mit Badge-Übersicht"
+              width={1672}
+              height={941}
+              className="w-full h-auto"
+              priority={true}
+            />
           </div>
         </div>
 
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Divider */}
         <div className="border-t border-blue-800 mb-24" />
+      </div>
 
-        {/* Individualisierte Unterweisungen */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="bg-blue-800 rounded-2xl p-8 border border-blue-700">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-blue-900 font-bold text-sm">SM</span>
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Ihre Firma GmbH</div>
-                  <div className="text-xs text-blue-400">Unterweisung 2025</div>
-                </div>
-              </div>
-              <div className="aspect-video bg-blue-950 rounded-xl mb-6 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">▶️</div>
-                  <div className="text-sm text-blue-400">Brandschutz · Ihre Firma GmbH</div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex-1 bg-blue-700 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold">100%</div>
-                  <div className="text-xs text-blue-400">Ihr Branding</div>
-                </div>
-                <div className="flex-1 bg-blue-700 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold">4+</div>
-                  <div className="text-xs text-blue-400">Sprachen</div>
-                </div>
-                <div className="flex-1 bg-blue-700 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold">7d</div>
-                  <div className="text-xs text-blue-400">Lieferzeit</div>
-                </div>
-              </div>
-            </div>
+        {/* Individualisierte Unterweisungen — full-bleed left */}
+        <div className="grid lg:grid-cols-2 items-center">
+          <div>
+            <Image
+              src="/images/Unternehmensfilm/ihr-logo.png"
+              alt="Individualisierte Unterweisung mit Ihrem Logo und Branding"
+              width={1264}
+              height={842}
+              className="w-full h-auto"
+            />
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="px-4 sm:px-6 lg:pr-[max(2rem,calc((100vw-72rem)/2+2rem))] lg:pl-12 py-8 lg:py-0">
             <p className="text-sm font-semibold text-blue-300 uppercase tracking-wider mb-3">
               Individualisierte Unterweisungen
             </p>
@@ -147,8 +103,6 @@ export function CustomContent() {
             </Link>
           </div>
         </div>
-
-      </div>
     </section>
   )
 }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Businesses_and_services" data-name="Businesses and services" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1601.98 1320.17">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-3 {
+        font-size: 12px;
+      }
+
+      .cls-3, .cls-4 {
+        font-family: NewBT-Regular, 'FXCWX H+ New BT';
+      }
+
+      .cls-4 {
+        font-size: 24px;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect class="cls-5" x="411.43" width="1190.55" height="1320.17"/>
+  <text class="cls-4" transform="translate(441.43 74.77)"><tspan x="0" y="0">Businesses and services</tspan></text>
+  <g>
+    <g>
+      <path class="cls-2" d="M544.15,188.68c2.75,0,2.92-.86.38-1.91l-18.48-7.65c-2.54-1.05-6.7-1.05-9.24,0l-18.48,7.65c-2.54,1.05-2.37,1.91.38,1.91h45.43Z"/>
+      <line class="cls-2" x1="503.43" y1="213.68" x2="503.43" y2="188.68"/>
+      <line class="cls-2" x1="515.43" y1="213.5" x2="515.43" y2="188.68"/>
+      <line class="cls-2" x1="527.43" y1="213.5" x2="527.43" y2="188.68"/>
+      <line class="cls-2" x1="539.43" y1="213.5" x2="539.43" y2="188.68"/>
+      <line class="cls-2" x1="498.43" y1="213.68" x2="544.43" y2="213.68"/>
+    </g>
+    <rect class="cls-1" x="481.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <line class="cls-2" x1="1336.43" y1="182" x2="1336.43" y2="210"/>
+      <line class="cls-2" x1="1336.43" y1="200" x2="1385.43" y2="200"/>
+      <path class="cls-2" d="M1359.43,187h20c3.31,0,7,2.69,7,6v17"/>
+      <circle class="cls-2" cx="1348.43" cy="187" r="2"/>
+    </g>
+    <rect class="cls-1" x="1321.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M960.43,210v-32c0-2.76-2.24-5-5-5h-2c-2.76,0-5,2.24-5,5v11h-14v-11c0-2.76-2.24-5-5-5h-2c-2.76,0-5,2.24-5,5v36c0,2.76,2.24,5,5,5h2c2.76,0,5-2.24,5-5v-13h14v13c0,2.76,2.24,5,5,5h2"/>
+    <rect class="cls-1" x="901.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <circle class="cls-2" cx="646.43" cy="341" r="1"/>
+      <circle class="cls-2" cx="676.43" cy="341" r="1"/>
+      <path class="cls-2" d="M641.43,331v-10c0-2.76,2.24-5,5-5h30c2.76,0,5,2.24,5,5v10"/>
+      <path class="cls-2" d="M681.43,331c2.76,0,5,2.24,5,5v11"/>
+      <path class="cls-2" d="M681.43,356h-40c-2.76,0-5-2.24-5-5v-15c0-2.76,2.24-5,5-5"/>
+      <polyline class="cls-2" points="666.43 356 666.43 339 656.43 339 656.43 356"/>
+      <line class="cls-2" x1="641.43" y1="356" x2="641.43" y2="362"/>
+      <line class="cls-2" x1="681.43" y1="356" x2="681.43" y2="362"/>
+      <rect class="cls-2" x="656.43" y="312" width="10" height="4"/>
+    </g>
+    <rect class="cls-1" x="621.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M1087.43,221h-12c-2.76,0-5-2.24-5-5v-7c0-3.85-1.12-10.6-2.5-15s-2.5-9.8-2.5-12v-4c0-2.76,2.24-5,5-5h22c2.76,0,5,2.24,5,5v4c0,2.2-1.12,7.6-2.5,12s-2.5,11.15-2.5,15,0,3,0,3"/>
+      <line class="cls-2" x1="1065.76" y1="185" x2="1097.11" y2="185"/>
+    </g>
+    <rect class="cls-1" x="1041.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="1181.43" y="156" width="80" height="80"/>
+    <g>
+      <line class="cls-2" x1="1217.43" y1="195" x2="1208.77" y2="169"/>
+      <polyline class="cls-2" points="1245.43 203 1237.43 195 1229.43 219 1213.43 219 1205.43 195 1197.43 203"/>
+      <polyline class="cls-2" points="1231.76 176 1225.43 195 1205.43 195"/>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="761.43" y="156" width="80" height="80"/>
+    <g>
+      <path class="cls-2" d="M778.43,211v-30h9c4.97,0,9,4.03,9,9s-4.03,9-9,9h-9"/>
+      <path class="cls-2" d="M826.43,201c0,5.52-4.48,10-10,10s-10-4.48-10-10v-10c0-5.52,4.48-10,10-10s10,4.48,10,10v10Z"/>
+    </g>
+  </g>
+  <g>
+    <path class="cls-2" d="M507.43,323h29v11c0,9.39-7.61,17-17,17h-4c-9.39,0-17-7.61-17-17v-6"/>
+    <path class="cls-2" d="M536.43,328h6c3.31,0,6,2.69,6,6s-2.69,6-6,6h-6"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M1521.43,203c-2.76,0-5-2.24-5-5v-2c0-2.75.23-7.03.5-9.5s1.27-6.62,2.21-9.2l.58-1.6c.94-2.58,1.71-2.45,1.71.3v45"/>
+      <g>
+        <line class="cls-2" x1="1491.43" y1="175" x2="1491.43" y2="221"/>
+        <path class="cls-2" d="M1501.43,175v12c0,5.52-4.48,10-10,10s-10-4.48-10-10v-12"/>
+      </g>
+    </g>
+    <rect class="cls-1" x="1461.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M676.43,191v5c0,2.75,1.35,6.35,3,8,1.65,1.65,3,3,3,3"/>
+      <path class="cls-2" d="M640.43,207s1.35-1.35,3-3c1.65-1.65,3-5.25,3-8v-5"/>
+      <circle class="cls-2" cx="661.43" cy="196" r="5"/>
+      <path class="cls-2" d="M682.43,207l-12.32,7.04c-4.78,2.73-12.59,2.73-17.37,0l-12.32-7.04"/>
+      <path class="cls-2" d="M676.43,191c0-6.59-4.25-12.17-10.16-14.19-.53-2.19-2.49-3.81-4.84-3.81s-4.31,1.63-4.84,3.81c-5.91,2.02-10.16,7.6-10.16,14.19"/>
+    </g>
+    <rect class="cls-1" x="621.43" y="156" width="80" height="80"/>
+  </g>
+  <text class="cls-3" transform="translate(506.77 246.33)"><tspan x="0" y="0">Banks</tspan></text>
+  <text class="cls-3" transform="translate(625.52 246.33)"><tspan x="0" y="0">Police stations</tspan></text>
+  <text class="cls-3" transform="translate(773.04 246.33)"><tspan x="0" y="0">Post offices</tspan></text>
+  <text class="cls-3" transform="translate(918.36 246.33)"><tspan x="0" y="0">Hospitals</tspan></text>
+  <text class="cls-3" transform="translate(1069.1451 246.3257)"><tspan x="0" y="0">Pubs</tspan></text>
+  <text class="cls-3" transform="translate(1194.3372 246.3257)"><tspan x="0" y="0">Takeaways</tspan></text>
+  <text class="cls-3" transform="translate(1345.4431 246.3257)"><tspan x="0" y="0">Hotels</tspan></text>
+  <text class="cls-3" transform="translate(489.08 386.33)"><tspan x="0" y="0">Coffee shops</tspan></text>
+  <text class="cls-3" transform="translate(649 386.33)"><tspan x="0" y="0">Taxis</tspan></text>
+  <text class="cls-3" transform="translate(1472.0933 246.3257)"><tspan x="0" y="0">Restaurants</tspan></text>
+</svg>

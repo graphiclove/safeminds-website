@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getComparison, getAllComparisonSlugs } from '@/data/comparisons'
+import { Icon, type IconName } from '@/components/ui/Icon'
 
 export async function generateStaticParams() {
   return getAllComparisonSlugs().map((slug) => ({ slug }))
@@ -129,10 +130,10 @@ export default async function VergleichPage({ params }: { params: Promise<{ slug
             {c.benefits.map((b) => (
               <div key={b.title} className="bg-white rounded-2xl p-8 border border-[#e8edf2] flex flex-col">
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-6 flex-shrink-0"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 flex-shrink-0 text-[#1d4ed8]"
                   style={{ background: '#eef2f7' }}
                 >
-                  {b.icon}
+                  <Icon name={b.icon as IconName} size={22} />
                 </div>
                 <h3 className="font-bold text-[#0f172a] text-base mb-2.5 leading-snug">{b.title}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed">{b.desc}</p>

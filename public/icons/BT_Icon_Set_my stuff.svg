@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="My_stuff" data-name="My stuff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1601.98 1320.17">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #000;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-6 {
+        font-size: 12px;
+      }
+
+      .cls-6, .cls-7, .cls-5 {
+        font-family: NewBT-Regular, 'FXCWX H+ New BT';
+      }
+
+      .cls-7 {
+        font-size: 24px;
+      }
+
+      .cls-8 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke: #ffa02f;
+      }
+
+      .cls-4 {
+        stroke: red;
+      }
+
+      .cls-5 {
+        font-size: 16px;
+      }
+
+      .cls-9 {
+        fill: red;
+      }
+    </style>
+  </defs>
+  <rect class="cls-8" x="411.43" width="1190.55" height="1320.17"/>
+  <text class="cls-5" transform="translate(212.43 216.81)"><tspan x="0" y="0">Lorem</tspan></text>
+  <text class="cls-5" transform="translate(212.43 356.96)"><tspan x="0" y="0">Lorem</tspan></text>
+  <text class="cls-5" transform="translate(212.43 497.11)"><tspan x="0" y="0">Lorem</tspan></text>
+  <text class="cls-5" transform="translate(212.43 637.26)"><tspan x="0" y="0">Lorem</tspan></text>
+  <g>
+    <g>
+      <circle class="cls-2" cx="1355.43" cy="211" r="9"/>
+      <line class="cls-2" x1="1364.43" y1="211" x2="1364.43" y2="172"/>
+      <path class="cls-2" d="M1376.43,192c0-9.52-12-10.48-12-20"/>
+    </g>
+    <rect class="cls-1" x="1321.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <rect class="cls-2" x="515.43" y="328" width="12" height="16"/>
+      <polyline class="cls-2" points="499.43 328 505.43 328 505.43 344 499.43 344"/>
+      <polyline class="cls-2" points="543.43 344 537.43 344 537.43 328 543.43 328"/>
+      <line class="cls-2" x1="543.43" y1="318" x2="499.43" y2="318"/>
+      <line class="cls-2" x1="543.43" y1="354" x2="499.43" y2="354"/>
+    </g>
+    <rect class="cls-1" x="481.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M505.43,219h-28c-2.76,0-5-2.24-5-5v-36c0-2.76,2.24-5,5-5h15c1.67,0,2.83.33,4.5,2l11.5,11.5c1.67,1.67,2,2.83,2,4.5v18"/>
+      <polyline class="cls-2" points="510.37 190 493.43 190 493.43 173.06"/>
+    </g>
+    <rect class="cls-1" x="451.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M563.43,217h-24c-2.76,0-5-2.24-5-5v-32c0-2.76,2.24-5,5-5h12c1.67,0,2.83.33,4.5,2l10.5,10.5c1.67,1.67,2,2.83,2,4.5v15"/>
+      <polyline class="cls-2" points="568.37 191 552.43 191 552.43 175.06"/>
+    </g>
+    <rect class="cls-1" x="511.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M664.93,331.5h-12c0-2.76-2.24-5-5-5h-5c-2.76,0-5,2.24-5,5v20c0,2.76,2.24,5,5,5h26c2.76,0,5-2.24,5-5"/>
+      <polygon class="cls-2" points="664.93 345.5 684.93 330.5 664.93 315.5 664.93 345.5"/>
+    </g>
+    <rect class="cls-1" x="621.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M678.43,214h-34c-2.76,0-5-2.24-5-5v-26c0-2.76,2.24-5,5-5h8c2.76,0,5,2.24,5,5h21c2.76,0,5,2.24,5,5v16"/>
+    <rect class="cls-1" x="621.43" y="156" width="80" height="80"/>
+  </g>
+  <text class="cls-7" transform="translate(441.43 74.77)"><tspan x="0" y="0">My stuff</tspan><tspan x="0" y="28.8">Relating to digital (online) content, archives, files, folders</tspan></text>
+  <g>
+    <rect class="cls-1" x="1041.43" y="296" width="80" height="80"/>
+    <g>
+      <polyline class="cls-2" points="1068.93 351.5 1063.93 358.5 1058.93 351.5"/>
+      <circle class="cls-2" cx="1088.93" cy="338.5" r="15"/>
+      <circle class="cls-2" cx="1088.93" cy="338.5" r="2"/>
+      <path class="cls-2" d="M1063.93,358.5v-20c0-13.81,11.19-25,25-25"/>
+      <g>
+        <line class="cls-2" x1="1104.18" y1="308.5" x2="1104.18" y2="313.5"/>
+        <line class="cls-2" x1="1099.42" y1="311.96" x2="1104.18" y2="313.5"/>
+        <line class="cls-2" x1="1101.24" y1="317.54" x2="1104.18" y2="313.5"/>
+        <line class="cls-2" x1="1107.12" y1="317.54" x2="1104.18" y2="313.5"/>
+        <line class="cls-2" x1="1108.93" y1="311.95" x2="1104.18" y2="313.5"/>
+      </g>
+    </g>
+  </g>
+  <g>
+    <path class="cls-2" d="M1374.9,329.57l8.16.12c2.75.04,3.2,1.41.99,3.05l-8.15,6.07c-2.21,1.64-3.34,5.14-2.52,7.76l3.02,9.71c.82,2.62-.35,3.47-2.6,1.88l-8.3-5.87c-2.24-1.59-5.92-1.59-8.16,0l-8.3,5.87c-2.24,1.59-3.41.74-2.59-1.88l3.02-9.71c.82-2.62-.32-6.12-2.52-7.76l-8.15-6.07c-2.21-1.64-1.76-3.02.99-3.05l10.16-.12c2.75-.04,5.72-2.19,6.6-4.8l3.26-9.63c.88-2.61,2.33-2.61,3.21,0l3.26,9.63"/>
+    <rect class="cls-1" x="1321.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="761.43" y="296" width="80" height="80"/>
+    <g>
+      <path class="cls-2" d="M822.43,346v-15c0-2.76-2.24-5-5-5h-32c-2.76,0-5,2.24-5,5v20c0,2.76,2.24,5,5,5h32"/>
+      <polyline class="cls-2" points="815.43 312 801.43 326 787.43 312"/>
+    </g>
+  </g>
+  <text class="cls-6" transform="translate(1321.8455 246.3257)"><tspan x="0" y="0">Music/Ringtone</tspan></text>
+  <text class="cls-6" transform="translate(496.8 386.33)"><tspan x="0" y="0">Video clip</tspan></text>
+  <text class="cls-6" transform="translate(1457.2799 246.3257)"><tspan x="0" y="0">My Vault/My stuff</tspan></text>
+  <text class="cls-6" transform="translate(645.45 246.33)"><tspan x="0" y="0">Folder</tspan></text>
+  <text class="cls-6" transform="translate(784.11 246.33)"><tspan x="0" y="0">Private</tspan></text>
+  <text class="cls-6" transform="translate(903.47 246.33)"><tspan x="0" y="0">Private (colour)</tspan></text>
+  <text class="cls-6" transform="translate(1057.4873 246.3257)"><tspan x="0" y="0">Invitation</tspan><tspan class="cls-9"><tspan x="-37.01" y="14.4">(a ‘Public’ icon will need </tspan></tspan><tspan class="cls-9"><tspan x="-43.12" y="28.8">to be created in the future)</tspan></tspan></text>
+  <text class="cls-6" transform="translate(1176.8475 246.3257)"><tspan x="0" y="0">Invitation (colour)</tspan></text>
+  <text class="cls-6" transform="translate(494.82 246.33)"><tspan x="0" y="0">Document</tspan><tspan class="cls-9"><tspan x="-97.67" y="14.4">One smaller than other (used in Digital Vault lists) </tspan></tspan><tspan class="cls-9"><tspan x="-90.39" y="28.8">Do we chooose one of them or go with 2 sizes?</tspan></tspan></text>
+  <text class="cls-6" transform="translate(622.24 386.33)"><tspan x="0" y="0">View Play Share</tspan></text>
+  <text class="cls-6" transform="translate(1021.7037 386.3262)"><tspan x="0" y="0">New/Recent downloads</tspan></text>
+  <text class="cls-6" transform="translate(1327.9835 386.3262)"><tspan x="0" y="0">Most popular</tspan></text>
+  <text class="cls-6" transform="translate(1193.5694 386.3262)"><tspan x="0" y="0">Wallpapers</tspan></text>
+  <text class="cls-6" transform="translate(923.74 386.33)"><tspan x="0" y="0">Bundle</tspan></text>
+  <text class="cls-6" transform="translate(795.1 386.33)"><tspan x="0" y="0">TV</tspan></text>
+  <g>
+    <rect class="cls-1" x="761.43" y="156" width="80" height="80"/>
+    <g>
+      <g>
+        <polyline class="cls-2" points="827.37 184 811.43 184 811.43 168.06"/>
+        <path class="cls-2" d="M793.43,190.12v-17.12c0-2.76,2.24-5,5-5h12c1.67,0,2.83.33,4.5,2l10.5,10.5c1.67,1.67,2,2.83,2,4.5v15"/>
+        <line class="cls-2" x1="822.43" y1="210" x2="809.32" y2="210"/>
+      </g>
+      <g>
+        <circle class="cls-2" cx="791.43" cy="208" r="18"/>
+        <line class="cls-2" x1="778.71" y1="220.73" x2="804.16" y2="195.27"/>
+      </g>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="1041.43" y="156" width="80" height="80"/>
+    <g>
+      <g>
+        <polyline class="cls-2" points="1107.37 184 1091.43 184 1091.43 168.06"/>
+        <path class="cls-2" d="M1073.43,194.53v-21.53c0-2.76,2.24-5,5-5h12c1.67,0,2.83.33,4.5,2l10.5,10.5c1.67,1.67,2,2.83,2,4.5v15"/>
+        <line class="cls-2" x1="1102.43" y1="210" x2="1082.4" y2="210"/>
+      </g>
+      <path class="cls-2" d="M1086.5,194.53c2.75,0,3.86,1.94,2.46,4.31l-14.93,25.38c-1.39,2.37-3.68,2.37-5.07,0l-14.93-25.38c-1.39-2.37-.29-4.31,2.46-4.31h30Z"/>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="1181.43" y="156" width="80" height="80"/>
+    <g>
+      <g>
+        <polyline class="cls-2" points="1247.37 184 1231.43 184 1231.43 168.06"/>
+        <path class="cls-2" d="M1213.43,194.53v-21.53c0-2.76,2.24-5,5-5h12c1.67,0,2.83.33,4.5,2l10.5,10.5c1.67,1.67,2,2.83,2,4.5v15"/>
+        <line class="cls-2" x1="1242.43" y1="210" x2="1222.4" y2="210"/>
+      </g>
+      <path class="cls-3" d="M1226.5,194.53c2.75,0,3.86,1.94,2.46,4.31l-14.93,25.38c-1.39,2.37-3.68,2.37-5.07,0l-14.93-25.38c-1.39-2.37-.29-4.31,2.46-4.31h30Z"/>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="901.43" y="156" width="80" height="80"/>
+    <g>
+      <g>
+        <polyline class="cls-2" points="967.37 184 951.43 184 951.43 168.06"/>
+        <path class="cls-2" d="M933.43,190.12v-17.12c0-2.76,2.24-5,5-5h12c1.67,0,2.83.33,4.5,2l10.5,10.5c1.67,1.67,2,2.83,2,4.5v15"/>
+        <line class="cls-2" x1="962.43" y1="210" x2="949.32" y2="210"/>
+      </g>
+      <g>
+        <circle class="cls-4" cx="931.43" cy="208" r="18"/>
+        <line class="cls-4" x1="918.71" y1="220.73" x2="944.16" y2="195.27"/>
+      </g>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M951.43,325v-5c0-2.76-2.24-5-5-5h-10c-2.76,0-5,2.24-5,5v5"/>
+      <path class="cls-2" d="M959.43,355h-36c-2.76,0-5-2.24-5-5v-20c0-2.76,2.24-5,5-5h36c2.76,0,5,2.24,5,5v16"/>
+    </g>
+    <rect class="cls-1" x="901.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="1181.43" y="296" width="80" height="80"/>
+    <g>
+      <rect class="cls-2" x="1206.43" y="321" width="30" height="30" rx="5" ry="5"/>
+      <line class="cls-2" x1="1234.97" y1="349.54" x2="1207.9" y2="322.46"/>
+      <line class="cls-2" x1="1207.9" y1="349.54" x2="1234.97" y2="322.46"/>
+      <g>
+        <path class="cls-2" d="M1245.43,322v-5c0-2.76-2.24-5-5-5h-5"/>
+        <path class="cls-2" d="M1207.43,312h-5c-2.76,0-5,2.24-5,5v5"/>
+        <path class="cls-2" d="M1197.43,350v5c0,2.76,2.24,5,5,5h5"/>
+        <path class="cls-2" d="M1235.43,360h5c2.76,0,5-2.24,5-5v-5"/>
+      </g>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="1461.43" y="156" width="80" height="80"/>
+    <path class="cls-2" d="M1503.43,188h-12c0-2.76-2.24-5-5-5h-5c-2.76,0-5,2.24-5,5v20c0,2.76,2.24,5,5,5h17v-7c0-4.91,3.44-9.12,8.37-10.98-2.05-1.65-3.37-4.18-3.37-7.02,0-4.97,4.03-9,9-9s9,4.03,9,9c0,2.84-1.32,5.37-3.37,7.02,4.93,1.86,8.37,6.07,8.37,10.98v7"/>
+  </g>
+</svg>

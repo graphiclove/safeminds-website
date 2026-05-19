@@ -1,26 +1,28 @@
-const badges = [
+import { Icon, type IconName } from '@/components/ui/Icon'
+
+const badges: { icon: IconName; label: string; sub: string }[] = [
   {
-    icon: '⚖️',
+    icon: 'file-text',
     label: '§12 ArbSchG',
     sub: 'Rechtskonform',
   },
   {
-    icon: '🛡️',
+    icon: 'shield',
     label: 'DGUV V2',
     sub: 'Zertifiziert',
   },
   {
-    icon: '🔒',
+    icon: 'lock',
     label: 'DSGVO',
     sub: 'Server in Deutschland',
   },
   {
-    icon: '🇩🇪',
+    icon: 'map-pin',
     label: 'Made in Germany',
     sub: 'Entwickelt & gehostet',
   },
   {
-    icon: '✅',
+    icon: 'check-circle',
     label: 'GDA-konform',
     sub: 'Gemeinsame Deutsche Arbeitsschutzstrategie',
   },
@@ -33,7 +35,7 @@ export function TrustBadges() {
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           {badges.map(b => (
             <div key={b.label} className="flex items-center gap-2">
-              <span className="text-xl">{b.icon}</span>
+              <Icon name={b.icon} size={20} className="text-[#1d4ed8]" />
               <div>
                 <span className="text-xs font-bold text-gray-800">{b.label}</span>
                 <span className="text-xs text-gray-400 ml-1">{b.sub}</span>

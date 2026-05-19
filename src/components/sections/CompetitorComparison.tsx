@@ -3,7 +3,7 @@ import Link from 'next/link'
 const competitors = [
   { name: 'SafeMinds', us: true },
   { name: 'TÜV Rheinland', us: false },
-  { name: 'Unterweisung.de', us: false },
+  { name: 'Unterweisung24', us: false },
   { name: 'Mibeo', us: false },
   { name: 'Präsenz-Unterweisung', us: false },
 ]
@@ -15,7 +15,7 @@ const criteria = [
   },
   {
     label: 'Unter 10 Min. pro Kurs',
-    values: [true, false, true, true, false],
+    values: [true, false, false, false, false],
   },
   {
     label: 'Automatische Dokumentation',
@@ -26,7 +26,7 @@ const criteria = [
     values: [true, false, false, false, false],
   },
   {
-    label: '§12 ArbSchG + DGUV V2',
+    label: '§12 ArbSchG-konform',
     values: [true, true, true, true, true],
   },
   {
@@ -35,11 +35,11 @@ const criteria = [
   },
   {
     label: 'Transparente Preise online',
-    values: [true, false, true, true, false],
+    values: [true, true, false, true, false],
   },
   {
     label: 'Ab 5 Mitarbeitende nutzbar',
-    values: [true, false, true, false, true],
+    values: [true, false, false, false, true],
   },
 ]
 

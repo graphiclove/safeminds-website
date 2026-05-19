@@ -1,64 +1,65 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { Icon, type IconName } from '@/components/ui/Icon'
 
 export const metadata: Metadata = {
   title: 'Digitales Onboarding | SafeMinds',
   description: 'Individuelle Onboarding-Videos für Ihre Abläufe, Maschinen und Prozesse — mehrsprachig, revisionssicher, direkt im SafeMinds-Portal.',
 }
 
-const problems = [
+const problems: { icon: IconName; title: string; desc: string }[] = [
   {
-    icon: '⏱️',
+    icon: 'clock',
     title: 'Einweisung kostet täglich Zeit',
     desc: 'Erfahrene Mitarbeitende erklären immer wieder dasselbe. Besonders bei saisonalem oder wechselndem Personal läuft das jede Woche neu ab.',
   },
   {
-    icon: '🌍',
+    icon: 'globe',
     title: 'Sprachbarrieren erhöhen das Risiko',
     desc: 'Mündliche Einweisungen kommen nicht immer vollständig an — besonders wenn Deutsch nicht die Muttersprache ist.',
   },
   {
-    icon: '📋',
+    icon: 'clipboard',
     title: 'Kein Nachweis, keine Dokumentation',
     desc: 'Wer hat wann was gelernt? Bei einer Begehung oder einem Unfall fehlt der rechtssichere Nachweis der durchgeführten Einweisung.',
   },
   {
-    icon: '🔄',
+    icon: 'refresh',
     title: 'Immer wieder von vorne',
     desc: 'Neue Saison, neue Leiharbeitende — und wieder stehen Führungskräfte an der Maschine und erklären die Grundlagen.',
   },
 ]
 
-const industries = [
+const industries: { name: string; example: string; icon: IconName }[] = [
   {
     name: 'Produktion & Lebensmittel',
     example: 'Einweisung an Maschinen und Anlagen — in der Muttersprache der Mitarbeitenden.',
-    icon: '🏭',
+    icon: 'factory',
   },
   {
     name: 'Büro & Verwaltung',
     example: 'Abläufe, Systeme, Zuständigkeiten — als Video statt zweites Onboarding-Gespräch.',
-    icon: '🏢',
+    icon: 'building',
   },
   {
     name: 'Bau & Handwerk',
     example: 'Sicherheitsregeln, Notfallverhalten, Maschinenbedienung — direkt auf dem Smartphone.',
-    icon: '🏗️',
+    icon: 'hard-hat',
   },
   {
     name: 'Logistik & Lager',
     example: 'Staplerbedienung, Lagerordnung, Verladevorschriften — mehrsprachig und skalierbar.',
-    icon: '📦',
+    icon: 'package',
   },
   {
     name: 'Pflege & Gesundheit',
     example: 'Hygieneprotokolle, Patientenumgang, Notfallabläufe — für internationale Pflegekräfte.',
-    icon: '🏥',
+    icon: 'hospital',
   },
   {
     name: 'Gastronomie & Hotel',
     example: 'Küchenabläufe, Serviceprozesse, Hygienestandards — saisonal und wiederverwendbar.',
-    icon: '🍽️',
+    icon: 'utensils',
   },
 ]
 
@@ -91,9 +92,9 @@ const steps = [
 
 const packages = [
   {
-    name: 'Starter',
+    name: 'Starter-Modul',
     subtitle: 'Ein Bereich oder eine Maschine',
-    price: '1.490',
+    price: '990',
     unit: 'einmalig',
     features: [
       '1 individuelles Onboarding-Video (bis 5 Min.)',
@@ -106,9 +107,9 @@ const packages = [
     highlight: false,
   },
   {
-    name: 'Professional',
+    name: 'Professional-Modul',
     subtitle: 'Bis zu 3 Bereiche oder Prozesse',
-    price: '2.990',
+    price: '1.990',
     unit: 'einmalig',
     features: [
       'Bis zu 3 individuelle Onboarding-Videos',
@@ -127,7 +128,7 @@ const packages = [
     price: 'Auf Anfrage',
     unit: '',
     features: [
-      'Mehrere Onboarding-Videos nach Bedarf',
+      'Mehrere Module nach Bedarf',
       'Alle gewünschten Sprachen',
       'Jährliche Aktualisierung besprechbar',
       'Zentrale Verwaltung im Portal',
@@ -196,10 +197,10 @@ export default function OnboardingPage() {
             {problems.map(p => (
               <div key={p.title} className="bg-white rounded-2xl p-6 border border-[#e8edf2]">
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4 flex-shrink-0"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 flex-shrink-0 text-[#1d4ed8]"
                   style={{ background: '#eef2f7' }}
                 >
-                  {p.icon}
+                  <Icon name={p.icon} size={22} />
                 </div>
                 <h3 className="text-base font-bold text-[#0f172a] mb-2">{p.title}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed">{p.desc}</p>
@@ -225,10 +226,10 @@ export default function OnboardingPage() {
             {industries.map(i => (
               <div key={i.name} className="rounded-2xl border border-[#e8edf2] p-6 flex flex-col">
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4 flex-shrink-0"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 flex-shrink-0 text-[#1d4ed8]"
                   style={{ background: '#eef2f7' }}
                 >
-                  {i.icon}
+                  <Icon name={i.icon} size={22} />
                 </div>
                 <h3 className="text-base font-bold text-[#0f172a] mb-2">{i.name}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed">{i.example}</p>
@@ -388,17 +389,17 @@ export default function OnboardingPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { icon: '🎬', title: 'Individuell produziertes Video', desc: 'Kein generisches Standardmaterial — Ihr Video zeigt Ihre Maschinen, Ihre Abläufe, Ihre Sprache.' },
-              { icon: '🌍', title: 'Mehrsprachig', desc: 'Übersetzungen in die Sprachen Ihrer Belegschaft — damit Einweisungen wirklich ankommen.' },
-              { icon: '📱', title: 'Im SafeMinds-Portal', desc: 'Neue Mitarbeitende sehen das Video direkt beim ersten Login — auf jedem Gerät, ohne App.' },
-              { icon: '✅', title: 'Revisionssicherer Nachweis', desc: 'Wer hat wann was gesehen und bestätigt? Alles dokumentiert — bei Begehungen sofort abrufbar.' },
+              { icon: 'video' as IconName, title: 'Individuell produziertes Video', desc: 'Kein generisches Standardmaterial — Ihr Video zeigt Ihre Maschinen, Ihre Abläufe, Ihre Sprache.' },
+              { icon: 'globe' as IconName, title: 'Mehrsprachig', desc: 'Übersetzungen in die Sprachen Ihrer Belegschaft — damit Einweisungen wirklich ankommen.' },
+              { icon: 'smartphone' as IconName, title: 'Im SafeMinds-Portal', desc: 'Neue Mitarbeitende sehen das Video direkt beim ersten Login — auf jedem Gerät, ohne App.' },
+              { icon: 'check-circle' as IconName, title: 'Revisionssicherer Nachweis', desc: 'Wer hat wann was gesehen und bestätigt? Alles dokumentiert — bei Begehungen sofort abrufbar.' },
             ].map(item => (
               <div key={item.title} className="bg-white rounded-2xl p-6 border border-[#e8edf2] flex gap-4">
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-[#1d4ed8]"
                   style={{ background: '#eef2f7' }}
                 >
-                  {item.icon}
+                  <Icon name={item.icon} size={22} />
                 </div>
                 <div>
                   <h3 className="font-bold text-[#0f172a] text-base mb-1">{item.title}</h3>

@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import { Icon, type IconName } from '@/components/ui/Icon'
 
-const roles = [
+const roles: { role: string; icon: IconName; headline: string; desc: string; benefits: string[]; cta: string; color: string }[] = [
   {
     role: 'Arbeitgeber & Geschäftsführer',
-    icon: '🏢',
+    icon: 'building',
     headline: 'Haftung weg. Dokumentation drin.',
     desc: 'Sie sind gesetzlich verpflichtet, Mitarbeiter jährlich zu unterweisen. SafeMinds erledigt das rechtssicher — automatisch, dokumentiert, revisionssicher. Kein Papierkram, kein Organisationsaufwand.',
     benefits: [
@@ -16,7 +17,7 @@ const roles = [
   },
   {
     role: 'Sicherheitsbeauftragte (SiBe)',
-    icon: '🦺',
+    icon: 'shield' as IconName,
     headline: 'Endlich ein System, das Ihnen die Arbeit abnimmt.',
     desc: 'Schluss mit Excel-Listen, Unterschriftenbögen und der manuellen Nachverfolgung wer was wann gemacht hat. SafeMinds dokumentiert automatisch, erinnert selbstständig und liefert auf Knopfdruck alle Nachweise.',
     benefits: [
@@ -29,7 +30,7 @@ const roles = [
   },
   {
     role: 'HR & Personalverantwortliche',
-    icon: '👥',
+    icon: 'users' as IconName,
     headline: 'Onboarding und Unterweisung in einem Durchlauf.',
     desc: 'Neue Mitarbeiter erhalten beim ersten Login automatisch ihre Einweisung — mehrsprachig, mit Unternehmensfilm und Pflichtunterweisung in einem. Kein zweites Gespräch, kein Dolmetscher, kein Zeitverlust.',
     benefits: [
@@ -84,7 +85,7 @@ export function RoleSections() {
               <div key={r.role} className="rounded-2xl bg-gray-50 border border-gray-100 p-7 flex flex-col gap-5 hover:shadow-md transition-shadow">
                 <div>
                   <span className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full border mb-4 ${colors.badge}`}>
-                    <span>{r.icon}</span>
+                    <Icon name={r.icon} size={14} />
                     {r.role}
                   </span>
                   <h3 className="text-lg font-bold text-gray-900 leading-snug">{r.headline}</h3>

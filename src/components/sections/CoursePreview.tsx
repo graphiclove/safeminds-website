@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import { courses, availableCourses, CATEGORIES } from '@/data/courses'
+import { Icon, type IconName } from '@/components/ui/Icon'
 
-const CATEGORY_META: Record<string, { icon: string }> = {
-  'Grundlagen':            { icon: '📋' },
-  'Gesundheit & PSA':      { icon: '🦺' },
-  'Arbeitsmittel':         { icon: '🔧' },
-  'Fahrzeuge & Maschinen': { icon: '🚜' },
-  'Gefahrstoffe':          { icon: '⚠️' },
-  'Spezialarbeiten':       { icon: '⛏️' },
+const CATEGORY_META: Record<string, { icon: IconName }> = {
+  'Grundlagen':            { icon: 'clipboard' },
+  'Gesundheit & PSA':      { icon: 'shield' },
+  'Arbeitsmittel':         { icon: 'wrench' },
+  'Fahrzeuge & Maschinen': { icon: 'truck' },
+  'Gefahrstoffe':          { icon: 'alert-triangle' },
+  'Spezialarbeiten':       { icon: 'settings' },
 }
 
 const displayCategories = CATEGORIES.filter((c) => c !== 'Alle')
@@ -64,10 +65,10 @@ export function CoursePreview() {
                 {/* Icon box + count */}
                 <div className="flex items-start justify-between mb-6">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-[#1d4ed8]"
                     style={{ background: '#eef2f7' }}
                   >
-                    {meta.icon}
+                    <Icon name={meta.icon} size={22} />
                   </div>
                   <span className="text-xs font-semibold text-[#3b82f6] bg-[#eff6ff] px-2.5 py-1 rounded-full">
                     {catCourses.length} Kurse

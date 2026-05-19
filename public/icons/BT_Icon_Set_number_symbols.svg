@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Letters_numbers_and_symbols" data-name="Letters, numbers and symbols" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1601.98 1320.17">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-3 {
+        font-size: 12px;
+      }
+
+      .cls-3, .cls-4 {
+        font-family: NewBT-Regular, 'FXCWX H+ New BT';
+      }
+
+      .cls-4 {
+        font-size: 24px;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect class="cls-5" x="411.43" width="1190.55" height="841.89"/>
+  <text class="cls-4" transform="translate(441.43 74.77)"><tspan x="0" y="0">Letters, numbers and symbols</tspan></text>
+  <text class="cls-3" transform="translate(502.17 246.33)"><tspan x="0" y="0">0 / Zero</tspan></text>
+  <g>
+    <g>
+      <line class="cls-2" x1="789.43" y1="334.5" x2="813.43" y2="334.5"/>
+      <line class="cls-2" x1="789.43" y1="346.5" x2="813.43" y2="346.5"/>
+      <line class="cls-2" x1="806.93" y1="327" x2="806.93" y2="354"/>
+      <line class="cls-2" x1="795.93" y1="327" x2="795.93" y2="354"/>
+    </g>
+    <rect class="cls-1" x="761.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M531.93,204c0,5.8-4.7,10.5-10.5,10.5s-10.5-4.7-10.5-10.5v-16c0-5.8,4.7-10.5,10.5-10.5s10.5,4.7,10.5,10.5v16Z"/>
+    <rect class="cls-1" x="481.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <line class="cls-2" x1="652.43" y1="214" x2="670.43" y2="214"/>
+      <polyline class="cls-2" points="652.43 181.28 661.43 178 661.43 214"/>
+    </g>
+    <rect class="cls-1" x="621.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <line class="cls-2" x1="941.43" y1="318" x2="941.43" y2="338"/>
+      <line class="cls-2" x1="932.77" y1="333" x2="950.09" y2="323"/>
+      <line class="cls-2" x1="950.09" y1="333" x2="932.77" y2="323"/>
+    </g>
+    <rect class="cls-1" x="901.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M671.43,327.5c0,10.86-5.24,20.49-13.33,26.5"/>
+      <circle class="cls-2" cx="661.43" cy="327.5" r="10"/>
+    </g>
+    <rect class="cls-1" x="621.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <circle class="cls-2" cx="521.43" cy="326" r="8.5"/>
+      <circle class="cls-2" cx="521.43" cy="344.5" r="10"/>
+    </g>
+    <rect class="cls-1" x="481.43" y="296" width="80" height="80"/>
+  </g>
+  <g>
+    <polyline class="cls-2" points="1498.33 214 1511.43 178 1491.43 178"/>
+    <rect class="cls-1" x="1461.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <g>
+      <path class="cls-2" d="M1351.43,204.5c0-10.86,5.24-20.49,13.33-26.5"/>
+      <circle class="cls-2" cx="1361.43" cy="204.5" r="10"/>
+    </g>
+    <rect class="cls-1" x="1321.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M1229.43,178h-15.5v16.29c1.73-1.13,3.79-1.79,6-1.79,6.08,0,11,4.92,11,11s-4.92,11-11,11c-3.16,0-5.99-1.34-8-3.47"/>
+    <rect class="cls-1" x="1181.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <polyline class="cls-2" points="1093.43 203 1069.43 203 1086.94 178 1086.94 214"/>
+    <rect class="cls-1" x="1041.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M933.01,183c1.21-3.21,4.31-5.5,7.94-5.5,4.69,0,8.5,3.81,8.5,8.5s-3.81,8.5-8.5,8.5h.25c5.52,0,10,4.48,10,10s-4.48,10-10,10c-4.48,0-8.27-2.94-9.54-7"/>
+    <rect class="cls-1" x="901.43" y="156" width="80" height="80"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M792.45,181.07c3.55-4.23,9.86-4.78,14.09-1.23,4.23,3.55,4.78,9.86,1.23,14.09l-16.84,20.07h21"/>
+    <rect class="cls-1" x="761.43" y="156" width="80" height="80"/>
+  </g>
+  <text class="cls-3" transform="translate(643.28 246.33)"><tspan x="0" y="0">1 / One</tspan></text>
+  <text class="cls-3" transform="translate(783.06 246.33)"><tspan x="0" y="0">2 / Two</tspan></text>
+  <text class="cls-3" transform="translate(919.47 246.33)"><tspan x="0" y="0">3 / Three</tspan></text>
+  <text class="cls-3" transform="translate(1062.2693 246.3257)"><tspan x="0" y="0">4 / Four</tspan></text>
+  <text class="cls-3" transform="translate(1203.5353 246.3257)"><tspan x="0" y="0">5 / Five</tspan></text>
+  <text class="cls-3" transform="translate(1346.6133 246.3257)"><tspan x="0" y="0">6 / Six</tspan></text>
+  <text class="cls-3" transform="translate(1478.5674 246.3257)"><tspan x="0" y="0">7 / Seven</tspan></text>
+  <text class="cls-3" transform="translate(500.73 386.33)"><tspan x="0" y="0">8 / Eight</tspan></text>
+  <text class="cls-3" transform="translate(642.07 386.33)"><tspan x="0" y="0">9 / Nine</tspan></text>
+  <text class="cls-3" transform="translate(781.34 386.33)"><tspan x="0" y="0"># / Hash</tspan></text>
+  <text class="cls-3" transform="translate(914.75 386.33)"><tspan x="0" y="0">* / Asterisk</tspan></text>
+  <text class="cls-3" transform="translate(1066.4751 386.3257)"><tspan x="0" y="0">Space</tspan></text>
+  <g>
+    <rect class="cls-1" x="1041.43" y="296" width="80" height="80"/>
+    <path class="cls-2" d="M1056.43,330v7c0,2.76,2.24,5,5,5h40c2.76,0,5-2.24,5-5v-7"/>
+  </g>
+  <text class="cls-3" transform="translate(1194.7933 386.3257)"><tspan x="0" y="0">Uppercase</tspan></text>
+  <g>
+    <rect class="cls-1" x="1181.43" y="296" width="80" height="80"/>
+    <path class="cls-2" d="M1232.43,347.96v-11h8c2.75,0,3.41-1.59,1.46-3.54l-16.93-16.93c-1.94-1.94-5.13-1.94-7.07,0l-16.93,16.93c-1.94,1.94-1.29,3.54,1.46,3.54h8v15c0,2.76,2.24,5,5,5h12"/>
+  </g>
+</svg>
