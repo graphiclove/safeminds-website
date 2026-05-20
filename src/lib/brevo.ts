@@ -21,28 +21,33 @@ export async function createBrevoContact(
   const company  = 'company' in data ? data.company  : undefined
   const message  = 'message' in data ? data.message  : undefined
 
+  const requestBody = {
+    email: data.email,
+    attributes: {
+      ...(vorname  && { VORNAME:      vorname }),
+      ...(nachname && { NACHNAME:     nachname }),
+      ...(company  && { UNTERNEHMEN:  company }),
+      ...(message  && { NACHRICHT:    message }),
+      FORM_SOURCE: data.form_source,
+      ...(data.utm_source   && { UTM_SOURCE:   data.utm_source }),
+      ...(data.utm_campaign && { UTM_CAMPAIGN: data.utm_campaign }),
+      SUBMITTED_AT: new Date().toISOString(),
+    },
+    listIds: [listId],
+    updateEnabled: true,
+  }
+
   const response = await fetch(`${BREVO_API_URL}/contacts`, {
     method: 'POST',
     headers: getHeaders(),
-    body: JSON.stringify({
-      email: data.email,
-      attributes: {
-        ...(vorname  && { VORNAME:      vorname }),
-        ...(nachname && { NACHNAME:     nachname }),
-        ...(company  && { UNTERNEHMEN:  company }),
-        ...(message  && { NACHRICHT:    message }),
-        FORM_SOURCE: data.form_source,
-        ...(data.utm_source   && { UTM_SOURCE:   data.utm_source }),
-        ...(data.utm_campaign && { UTM_CAMPAIGN: data.utm_campaign }),
-        SUBMITTED_AT: new Date().toISOString(),
-      },
-      listIds: [listId],
-      updateEnabled: true,
-    }),
+    body: JSON.stringify(requestBody),
   })
 
+  const responseText = await response.text()
+
   if (!response.ok && response.status !== 204) {
-    const error = await response.json().catch(() => ({}))
+    console.error('[Brevo] error', response.status, responseText)
+    const error = JSON.parse(responseText || '{}')
     throw new Error(error.message ?? `Brevo API error: ${response.status}`)
   }
 
