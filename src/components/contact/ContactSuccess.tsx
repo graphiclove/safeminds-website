@@ -21,7 +21,7 @@ const STEPS = [
   },
 ]
 
-const VIDEO_SRC     = '/videos/kontaktaufnahme_video_aftersales.mp4'
+const VIDEO_SRC     = '/videos/kontaktaufnahme_video_aftersales-vertical_with_captions.mp4'
 const VIDEO_POSTER  = '/videos/Video%20thumbnail%20kontaktaufnahme%20aftersales%20vertical.png'
 
 export function ContactSuccess() {
