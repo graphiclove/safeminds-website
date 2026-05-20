@@ -53,3 +53,64 @@ export async function createBrevoContact(
 
   return true
 }
+
+export async function sendContactNotification(data: {
+  name?: string
+  email: string
+  company?: string
+  message?: string
+  form_source: string
+}) {
+  const subject =
+    data.form_source === 'kontakt'
+      ? `Neue Kontaktanfrage von ${data.name ?? data.email}`
+      : data.form_source === 'footer-newsletter'
+        ? `Neuer Newsletter-Abonnent: ${data.email}`
+        : `Neue Demo-Anfrage von ${data.name ?? data.email}`
+
+  const rows = [
+    ['Von', data.name ?? '—'],
+    ['E-Mail', data.email],
+    ['Unternehmen', data.company ?? '—'],
+    ['Nachricht', data.message ?? '—'],
+    ['Quelle', data.form_source],
+    ['Eingegangen', new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })],
+  ]
+
+  const tableRows = rows
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:6px 12px;font-weight:600;color:#64748b;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 12px;color:#0f172a">${value}</td></tr>`
+    )
+    .join('')
+
+  const htmlContent = `
+    <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
+      <h2 style="color:#1d4ed8;margin-bottom:16px">${subject}</h2>
+      <table style="border-collapse:collapse;width:100%;background:#f8fafc;border-radius:8px;overflow:hidden">
+        ${tableRows}
+      </table>
+      <p style="margin-top:20px;font-size:13px;color:#94a3b8">
+        Diese E-Mail wurde automatisch von der SafeMinds-Website gesendet.
+      </p>
+    </div>
+  `
+
+  const response = await fetch(`${BREVO_API_URL}/smtp/email`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({
+      sender: { name: 'SafeMinds Website', email: 'kontakt@safeminds.eu' },
+      to: [{ email: 'kontakt@safeminds.eu', name: 'Cem Yücetas' }],
+      replyTo: { email: data.email, name: data.name ?? data.email },
+      subject,
+      htmlContent,
+    }),
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    console.error('[Brevo] notification error', response.status, text)
+    // Non-fatal — don't throw, form submission already succeeded
+  }
+}

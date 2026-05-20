@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { contactSchema } from '@/lib/validations'
-import { createBrevoContact } from '@/lib/brevo'
+import { createBrevoContact, sendContactNotification } from '@/lib/brevo'
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,6 +22,9 @@ export async function POST(req: NextRequest) {
           : Number(process.env.BREVO_LIST_ID_DEMO)
 
     await createBrevoContact(parsed.data, listId)
+
+    // Always notify Cem, regardless of whether contact is new or existing
+    await sendContactNotification(parsed.data)
 
     return NextResponse.json({ success: true, message: 'Anfrage gesendet' })
   } catch (err) {
