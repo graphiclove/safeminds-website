@@ -5,6 +5,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { PromoBanner } from '@/components/PromoBanner'
+import { CourseSelectionProvider } from '@/lib/courseSelectionStore'
 
 const geist = Geist({
   variable: '--font-geist-sans',
@@ -23,10 +24,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <html lang="de" className={`${geist.variable} antialiased`} suppressHydrationWarning>
         <body className="min-h-screen flex flex-col">
-          <PromoBanner />
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
+          <CourseSelectionProvider>
+            <PromoBanner />
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </CourseSelectionProvider>
         </body>
       </html>
     </ClerkProvider>
