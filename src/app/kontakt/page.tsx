@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import type { Metadata } from 'next'
+import { ContactSuccess } from '@/components/contact/ContactSuccess'
 
 // Metadata must be exported from a server component — move to separate layout if needed
 // export const metadata: Metadata = { title: 'Kontakt — SafeMinds' }
@@ -38,6 +38,14 @@ export default function KontaktPage() {
     }
   }
 
+  if (status === 'success') {
+    return (
+      <main>
+        <ContactSuccess />
+      </main>
+    )
+  }
+
   return (
     <main className="py-20 px-4">
       <div className="max-w-2xl mx-auto">
@@ -48,81 +56,71 @@ export default function KontaktPage() {
           </p>
         </div>
 
-        {status === 'success' ? (
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
-            <div className="text-4xl mb-4">✅</div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">Nachricht erhalten!</h2>
-            <p className="text-gray-600">
-              Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="name">
-                  Name *
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Max Mustermann"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="email">
-                  E-Mail *
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="max@firma.de"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="company">
-                Unternehmen
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="name">
+                Name *
               </label>
               <input
-                id="company"
-                name="company"
+                id="name"
+                name="name"
                 type="text"
-                placeholder="Ihre Firma GmbH"
+                required
+                placeholder="Max Mustermann"
                 className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="message">
-                Nachricht *
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="email">
+                E-Mail *
               </label>
-              <textarea
-                id="message"
-                name="message"
+              <input
+                id="email"
+                name="email"
+                type="email"
                 required
-                rows={5}
-                placeholder="Wie können wir Ihnen helfen?"
-                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                placeholder="max@firma.de"
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            {error && (
-              <p className="text-red-600 text-sm">{error}</p>
-            )}
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold py-4 rounded-xl transition-colors"
-            >
-              {status === 'loading' ? 'Wird gesendet…' : 'Nachricht senden →'}
-            </button>
-          </form>
-        )}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="company">
+              Unternehmen
+            </label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              placeholder="Ihre Firma GmbH"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="message">
+              Nachricht *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              placeholder="Wie können wir Ihnen helfen?"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            />
+          </div>
+          {error && (
+            <p className="text-red-600 text-sm">{error}</p>
+          )}
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold py-4 rounded-xl transition-colors"
+          >
+            {status === 'loading' ? 'Wird gesendet…' : 'Nachricht senden →'}
+          </button>
+        </form>
       </div>
     </main>
   )
