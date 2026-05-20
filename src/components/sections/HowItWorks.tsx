@@ -3,18 +3,18 @@ import Link from 'next/link'
 const steps = [
   {
     number: '01',
-    title: 'Kurs auswählen & starten',
-    desc: 'Sofort online. Kein Download, keine Installation. Auf jedem Gerät — in unter 1 Minute einsatzbereit.',
+    title: 'Auswählen & starten',
+    desc: 'Sofort online, auf jedem Handy oder PC. Kein Download. In einer Minute startklar.',
   },
   {
     number: '02',
-    title: 'Lektionen & Wissenstest',
-    desc: 'Bei falschen Antworten: Hilfestellung und Frage wiederholen. Nahezu jede:r besteht auf Anhieb.',
+    title: 'Video ansehen & Quiz',
+    desc: 'Wer eine Frage falsch beantwortet, bekommt eine Erklärung und versucht es nochmal. Fast alle bestehen.',
   },
   {
     number: '03',
-    title: 'Zertifikat sofort herunterladen',
-    desc: 'PDF-Zertifikat direkt nach Abschluss. Automatisch in der Akte dokumentiert — Pflicht erfüllt.',
+    title: 'Zertifikat sofort — fertig',
+    desc: 'PDF direkt nach Abschluss. Automatisch in der Akte. Pflicht erfüllt, Nachweis sicher.',
   },
 ]
 
@@ -25,12 +25,12 @@ export function HowItWorks() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">So einfach geht&apos;s</p>
+          <p className="text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-3">Drei Schritte, fertig</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0f172a] mb-4">
-            So kommen Sie heute zum Zertifikat
+            Kurs gestartet. Zertifikat gesichert. Weiter.
           </h2>
           <p className="text-[#64748b] max-w-xl mx-auto text-[0.95rem]">
-            Kein Seminar, kein Termin, kein Papierkram. Einfach starten.
+            Kein Seminar. Kein Termin. Kein Papierkram.
           </p>
         </div>
 

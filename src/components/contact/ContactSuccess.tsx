@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 
 const STEPS = [
@@ -21,9 +21,12 @@ const STEPS = [
   },
 ]
 
-const VIDEO_SRC = '/videos/kontaktaufnahme_video_aftersales.mp4'
+const VIDEO_SRC     = '/videos/kontaktaufnahme_video_aftersales.mp4'
+const VIDEO_POSTER  = '/videos/Video%20thumbnail%20kontaktaufnahme%20aftersales%20vertical.png'
 
 export function ContactSuccess() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(false)
   const [nlEmail, setNlEmail] = useState('')
   const [nlStatus, setNlStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [nlError, setNlError] = useState('')
@@ -113,40 +116,71 @@ export function ContactSuccess() {
         </div>
 
         {/* ── Sektion 3: Gründer-Video ── */}
-        <div className="text-center">
+        <div className="flex flex-col items-center text-center">
           <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748b' }}>
             LERN UNS KENNEN, BIS WIR ANTWORTEN
           </p>
           <p className="text-sm mb-6" style={{ color: '#64748b' }}>
             75 Sekunden über das Warum hinter SafeMinds
           </p>
+
+          {/* Portrait video wrapper */}
           <div
-            className="aspect-video rounded-2xl overflow-hidden mx-auto"
+            className="relative w-full rounded-2xl overflow-hidden"
             style={{
-              maxWidth: 720,
+              maxWidth: 400,
+              aspectRatio: '9 / 16',
               boxShadow: '0 10px 30px rgba(29,78,216,0.15)',
+              background: '#0f172a',
             }}
           >
             <video
+              ref={videoRef}
               className="w-full h-full object-cover"
-              controls
+              controls={playing}
               preload="metadata"
               playsInline
+              poster={VIDEO_POSTER}
               aria-label="Gründervideo: Das Warum hinter SafeMinds"
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+              onEnded={() => setPlaying(false)}
               onError={(e) => {
                 const wrapper = (e.currentTarget as HTMLVideoElement).parentElement
                 if (wrapper) {
-                  wrapper.innerHTML = `
-                    <div class="w-full h-full flex flex-col items-center justify-center bg-slate-100 rounded-2xl gap-3">
-                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                      <p style="color:#64748b;font-size:0.875rem">Video wird in Kürze ergänzt</p>
-                    </div>`
+                  wrapper.innerHTML = `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f1f5f9;border-radius:16px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg><p style="color:#64748b;font-size:0.875rem">Video wird in Kürze ergänzt</p></div>`
                 }
               }}
             >
               <source src={VIDEO_SRC} type="video/mp4" />
-              <p className="p-6 text-sm" style={{ color: '#64748b' }}>Video wird in Kürze ergänzt.</p>
             </video>
+
+            {/* Play-Button-Overlay — nur sichtbar wenn nicht playing */}
+            {!playing && (
+              <button
+                onClick={() => {
+                  videoRef.current?.play()
+                  setPlaying(true)
+                }}
+                className="absolute inset-0 flex items-center justify-center group"
+                aria-label="Video abspielen"
+                style={{ background: 'rgba(0,0,0,0.18)' }}
+              >
+                <div
+                  className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
+                  style={{
+                    width: 72,
+                    height: 72,
+                    background: 'rgba(255,255,255,0.95)',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+                  }}
+                >
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="#1d4ed8">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+              </button>
+            )}
           </div>
         </div>
 

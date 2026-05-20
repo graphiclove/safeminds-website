@@ -5,27 +5,27 @@ import { useState } from 'react'
 const faqs = [
   {
     q: 'Ist SafeMinds rechtlich anerkannt?',
-    a: 'Ja. Alle Unterweisungen erfüllen die Anforderungen des §12 ArbSchG und der DGUV Vorschrift 2. Die Zertifikate sind revisionssicher und werden bei Betriebsprüfungen anerkannt. Wir aktualisieren die Inhalte laufend, wenn sich Vorschriften ändern.',
+    a: 'Ja. Alle Kurse erfüllen §12 ArbSchG und DGUV Vorschrift 2. Die Zertifikate sind revisionssicher — bei Betriebsprüfungen anerkannt. Inhaltliche Änderungen durch neue Vorschriften nehmen wir laufend vor.',
   },
   {
     q: 'Was passiert nach dem kostenlosen Test?',
-    a: 'Sie erhalten sofort Zugang zu einem vollständigen Demo-Kurs. Nach 14 Tagen können Sie entscheiden, ob Sie ein Paket buchen möchten. Es gibt keine automatische Verlängerung und keine Kreditkarte wird benötigt.',
+    a: 'Nach dem Anmelden bekommen Sie sofort Zugang zu einem vollständigen Kurs. Nach 14 Tagen entscheiden Sie — buchen oder nicht. Keine automatische Verlängerung, keine Kreditkarte nötig.',
   },
   {
     q: 'Wie funktioniert die Unterweisung konkret?',
-    a: 'Sie laden Ihre Mitarbeitenden per E-Mail ein. Diese klicken den Link, schauen das Video, beantworten Verständnisfragen und erhalten sofort ihr Zertifikat — alles in unter 30 Minuten, vom Handy oder Computer.',
+    a: 'Sie laden Mitarbeiter per E-Mail ein. Die klicken den Link, schauen das Video, beantworten die Fragen und laden ihr Zertifikat herunter — alles in unter 20 Minuten, egal ob vom Handy oder PC.',
   },
   {
     q: 'Kann ich die Kurse individualisieren?',
-    a: 'Ja, ab dem Business-Paket. Wir produzieren auf Wunsch Kurse mit Ihrem Logo, Ihren Prozessen und in Ihrer Sprache. Die Lieferzeit beträgt 5–10 Werktage. Sprechen Sie uns auf individuellen Bedarf an.',
+    a: 'Ab dem Business-Paket produzieren wir Kurse mit Ihrem Logo, Ihren Prozessen und in jeder Sprache. Lieferzeit: 7–14 Werktage. Sprechen Sie uns direkt an.',
   },
   {
     q: 'Wie viele Mitarbeiter können gleichzeitig teilnehmen?',
-    a: 'Unbegrenzt. Sie laden so viele Mitarbeitende ein wie Sie möchten. Abgerechnet wird nach abgeschlossenen Kursen — Sie zahlen nur, was wirklich genutzt wurde.',
+    a: 'Je nach Paket zwischen 10 und 250+ Nutzern gleichzeitig. Enterprise-Kunden skalieren weiter. Sprechen Sie uns an, wenn Sie mehr brauchen.',
   },
   {
     q: 'Was kostet SafeMinds pro Mitarbeiter?',
-    a: 'Ab € 4,90 pro Kurs und Mitarbeiter. Beim Business-Paket (€ 79/Monat) fallen keine Kosten pro Teilnehmer an — unbegrenzte Nutzung für Ihr gesamtes Team. Details finden Sie in unserer Preisübersicht.',
+    a: 'Zwischen € 2,99 und € 4,99 pro Mitarbeiter und Monat, je nach Paketgröße — jährlich abgerechnet. Details stehen in der Preisübersicht weiter oben auf dieser Seite.',
   },
 ]
 

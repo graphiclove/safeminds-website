@@ -10,19 +10,18 @@ export function FinalCTA() {
 
         {/* Eyebrow */}
         <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: 'rgba(255,255,255,0.7)' }}>
-          Jetzt loslegen
+          Noch heute erledigen
         </p>
 
         {/* Headline */}
         <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
-          Heute absichern.<br />
-          Morgen bereit sein.
+          Fangen Sie heute an.<br />
+          Ihre Mitarbeiter können es morgen erledigen.
         </h2>
 
         {/* Subline */}
         <p className="text-lg mb-10 max-w-xl mx-auto leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)' }}>
-          Starten Sie kostenlos — keine Kreditkarte, keine Installation, kein Risiko.
-          Ihre ersten Ergebnisse haben Sie noch heute.
+          Kostenlos starten, 14 Tage testen — kein Risiko, keine Kreditkarte. Wer überzeugt ist, bleibt. Wer nicht, hört auf. So einfach.
         </p>
 
         {/* Buttons */}
@@ -32,7 +31,7 @@ export function FinalCTA() {
             className="inline-flex items-center justify-center gap-2 bg-white font-bold text-base px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ color: '#1d4ed8' }}
           >
-            Kostenlos starten →
+            Jetzt kostenlos testen →
           </Link>
           <Link
             href="#demo"

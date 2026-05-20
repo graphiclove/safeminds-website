@@ -48,15 +48,14 @@ export function Hero() {
               className="font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0f172a] mb-6"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}
             >
-              Die Online-Unterweisung, die{' '}
-              <span className="text-[#1d4ed8]">Ihren Betrieb</span>{' '}
-              wirklich absichert.
+              Unterweisungen, die{' '}
+              <span className="text-[#1d4ed8]">jeder versteht</span>{' '}
+              — und die Ihnen den Rücken frei halten.
             </h1>
 
             {/* Subtitle */}
             <p className="text-[1.15rem] leading-[1.6] text-[#334155] mb-8">
-              Rechtssichere Arbeitsschutz-Unterweisungen nach §12 ArbSchG.
-              Video, Wissenstest, Zertifikat — in unter 10 Minuten pro Mitarbeiter.
+              Video, Wissenstest, Zertifikat — in unter 10 Minuten. Mehrsprachig. Rechtssicher nach §12 ArbSchG. Keine Ausreden mehr.
             </p>
 
             {/* CTAs */}
@@ -83,7 +82,7 @@ export function Hero() {
 
             {/* Disclaimer */}
             <p className="text-sm text-[#64748b]">
-              Keine Kreditkarte. Keine Installation. Sofort loslegen.
+              Keine Kreditkarte. Keine Installation. Läuft heute noch.
             </p>
           </div>
 
