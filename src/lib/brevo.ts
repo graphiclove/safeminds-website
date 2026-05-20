@@ -12,7 +12,8 @@ function getHeaders() {
 
 export async function createBrevoContact(
   data: ContactFormData | TrialFormData,
-  listId: number
+  listId: number,
+  extraAttributes: Record<string, string> = {}
 ) {
   const fullName = 'name' in data ? (data.name ?? '') : ''
   const [vorname, ...rest] = fullName.trim().split(/\s+/)
@@ -32,6 +33,7 @@ export async function createBrevoContact(
       ...(data.utm_source   && { UTM_SOURCE:   data.utm_source }),
       ...(data.utm_campaign && { UTM_CAMPAIGN: data.utm_campaign }),
       SUBMITTED_AT: new Date().toISOString(),
+      ...extraAttributes,
     },
     listIds: [listId],
     updateEnabled: true,

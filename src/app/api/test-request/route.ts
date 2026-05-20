@@ -23,6 +23,15 @@ export async function POST(req: NextRequest) {
   try {
     const listId = Number(process.env.BREVO_LIST_ID_TEST_REQUEST)
     if (listId) {
+      const extraAttributes: Record<string, string> = {
+        POSITION: data.position,
+        MITARBEITERZAHL: data.mitarbeiterzahl,
+        BRANCHE: data.branche,
+        AKTUELLES_SYSTEM: data.aktuelles_system,
+        ANGEFRAGTE_KURSE: data.angefragte_kurse.join(', '),
+        ...(data.position_sonstiges && { POSITION_SONSTIGES: data.position_sonstiges }),
+        ...(data.begruendung        && { BEGRUENDUNG:        data.begruendung }),
+      }
       await createBrevoContact(
         {
           name: `${data.vorname} ${data.nachname}`.trim(),
@@ -30,7 +39,8 @@ export async function POST(req: NextRequest) {
           company: data.unternehmen,
           form_source: data.form_source,
         },
-        listId
+        listId,
+        extraAttributes
       )
     }
   } catch (err) {
