@@ -14,8 +14,12 @@ export async function createBrevoContact(
   data: ContactFormData | TrialFormData,
   listId: number
 ) {
-  const name = 'name' in data ? data.name : undefined
-  const company = 'company' in data ? data.company : undefined
+  const fullName = 'name' in data ? (data.name ?? '') : ''
+  const [vorname, ...rest] = fullName.trim().split(/\s+/)
+  const nachname = rest.join(' ')
+
+  const company  = 'company' in data ? data.company  : undefined
+  const message  = 'message' in data ? data.message  : undefined
 
   const response = await fetch(`${BREVO_API_URL}/contacts`, {
     method: 'POST',
@@ -23,10 +27,12 @@ export async function createBrevoContact(
     body: JSON.stringify({
       email: data.email,
       attributes: {
-        ...(name && { FIRSTNAME: name }),
-        ...(company && { COMPANY: company }),
+        ...(vorname  && { VORNAME:      vorname }),
+        ...(nachname && { NACHNAME:     nachname }),
+        ...(company  && { UNTERNEHMEN:  company }),
+        ...(message  && { NACHRICHT:    message }),
         FORM_SOURCE: data.form_source,
-        ...(data.utm_source && { UTM_SOURCE: data.utm_source }),
+        ...(data.utm_source   && { UTM_SOURCE:   data.utm_source }),
         ...(data.utm_campaign && { UTM_CAMPAIGN: data.utm_campaign }),
         SUBMITTED_AT: new Date().toISOString(),
       },
