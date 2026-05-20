@@ -68,33 +68,73 @@ export async function sendContactNotification(data: {
         ? `Neuer Newsletter-Abonnent: ${data.email}`
         : `Neue Demo-Anfrage von ${data.name ?? data.email}`
 
-  const rows = [
-    ['Von', data.name ?? '—'],
-    ['E-Mail', data.email],
-    ['Unternehmen', data.company ?? '—'],
-    ['Nachricht', data.message ?? '—'],
-    ['Quelle', data.form_source],
-    ['Eingegangen', new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })],
-  ]
+  const receivedAt = new Date().toLocaleString('de-DE', {
+    timeZone: 'Europe/Berlin',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 
-  const tableRows = rows
-    .map(
-      ([label, value]) =>
-        `<tr><td style="padding:6px 12px;font-weight:600;color:#64748b;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 12px;color:#0f172a">${value}</td></tr>`
-    )
-    .join('')
+  const htmlContent = `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>${subject}</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #0f172a; background-color: #f8fafc; margin: 0; padding: 20px;">
 
-  const htmlContent = `
-    <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-      <h2 style="color:#1d4ed8;margin-bottom:16px">${subject}</h2>
-      <table style="border-collapse:collapse;width:100%;background:#f8fafc;border-radius:8px;overflow:hidden">
-        ${tableRows}
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+    <h2 style="color: #1d4ed8; margin-top: 0;">Neue Anfrage eingegangen</h2>
+
+    <p>Jemand hat das Kontaktformular auf <strong>safeminds.eu</strong> ausgefüllt. Hier sind die Details:</p>
+
+    <div style="background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 20px; border-radius: 6px; margin: 28px 0;">
+      <p style="margin: 0 0 12px 0; color: #64748b; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Zusammenfassung der Anfrage</p>
+
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 4px 0; color: #64748b; font-size: 14px; width: 110px; vertical-align: top;">Name:</td>
+          <td style="padding: 4px 0; font-weight: 600;">${data.name ?? '—'}</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">E-Mail:</td>
+          <td style="padding: 4px 0;">${data.email}</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Unternehmen:</td>
+          <td style="padding: 4px 0;">${data.company ?? '—'}</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Nachricht:</td>
+          <td style="padding: 4px 0; white-space: pre-wrap;">${data.message ?? '—'}</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Eingegangen:</td>
+          <td style="padding: 4px 0;">${receivedAt} Uhr</td>
+        </tr>
       </table>
-      <p style="margin-top:20px;font-size:13px;color:#94a3b8">
-        Diese E-Mail wurde automatisch von der SafeMinds-Website gesendet.
-      </p>
     </div>
-  `
+
+    <p>Antworte direkt auf diese E-Mail — die Antwort geht automatisch an ${data.email}.</p>
+
+    <p style="margin: 28px 0;">
+      <a href="mailto:${data.email}" style="background: #1d4ed8; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
+        Jetzt antworten →
+      </a>
+    </p>
+
+    <p style="color: #94a3b8; font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+      SafeMinds — Online-Unterweisungssystem für Arbeitssicherheit<br>
+      <a href="https://safeminds.eu" style="color: #94a3b8;">safeminds.eu</a>
+    </p>
+
+  </div>
+
+</body>
+</html>`
 
   const response = await fetch(`${BREVO_API_URL}/smtp/email`, {
     method: 'POST',
