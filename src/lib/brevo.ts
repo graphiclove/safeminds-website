@@ -232,9 +232,14 @@ export async function sendTestRequestNotification(data: {
       ${kurseListe}
     </ul>
 
-    <p style="margin: 28px 0;">
+    <p style="margin: 28px 0 12px 0;">
       <a href="mailto:${data.email}" style="background: #1d4ed8; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
         Jetzt antworten →
+      </a>
+    </p>
+    <p style="margin: 0 0 28px 0;">
+      <a href="https://calendly.com/kontakt-safeminds/30min" style="background: #f8fafc; color: #1d4ed8; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: 1px solid #dbeafe;">
+        📅 15-Min-Call buchen →
       </a>
     </p>
 
