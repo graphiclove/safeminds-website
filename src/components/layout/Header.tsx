@@ -37,7 +37,7 @@ export function Header() {
             href="/testen"
             className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 transition-colors"
           >
-            Kostenlos testen
+            14 Tage kostenlos testen
           </Link>
         </div>
       </div>

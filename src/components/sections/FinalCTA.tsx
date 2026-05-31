@@ -31,7 +31,7 @@ export function FinalCTA() {
             className="inline-flex items-center justify-center gap-2 bg-white font-bold text-base px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ color: '#1d4ed8' }}
           >
-            Jetzt kostenlos testen →
+            14 Tage kostenlos testen →
           </Link>
           <Link
             href="#demo"

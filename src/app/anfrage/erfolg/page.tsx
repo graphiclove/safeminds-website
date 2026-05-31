@@ -2,11 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useCourseSelection } from '@/lib/courseSelectionStore'
 import type { Course } from '@/data/courses'
-
-const CALENDLY_URL = 'https://calendly.com/kontakt-safeminds/30min'
 
 const STEPS = [
   { n: '1', title: 'Wir prüfen deine Anfrage', desc: 'Noch heute — persönlich, kein Bot.' },
@@ -131,32 +128,7 @@ export default function AnfrageErfolgPage() {
           </div>
         </div>
 
-        {/* ── 4. Calendly ── */}
-        <div
-          className="rounded-2xl overflow-hidden border border-[#e2e8f0]"
-          style={{ boxShadow: '0 4px 20px rgba(15,23,42,0.06)' }}
-        >
-          <div className="bg-[#0f172a] px-8 py-6 text-center">
-            <p className="text-xs font-bold tracking-widest text-[#93c5fd] uppercase mb-2">
-              OPTIONAL — ABER EMPFOHLEN
-            </p>
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-              Starte schneller — buche einen 15-Minuten-Call
-            </h2>
-            <p className="text-[#94a3b8] text-sm">
-              Wir richten deinen Zugang gemeinsam ein und du bekommst sofort Antworten auf deine Fragen.
-            </p>
-          </div>
-          <div className="bg-white">
-            <div
-              className="calendly-inline-widget"
-              data-url={`${CALENDLY_URL}?hide_gdpr_banner=1&primary_color=1d4ed8`}
-              style={{ minWidth: '320px', height: '700px' }}
-            />
-          </div>
-        </div>
-
-        {/* ── 5. Gründer-Video ── */}
+        {/* ── 4. Gründer-Video ── */}
         <div className="flex flex-col items-center text-center">
           <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748b' }}>
             LERN UNS KENNEN, BIS WIR ANTWORTEN
@@ -187,7 +159,7 @@ export default function AnfrageErfolgPage() {
           </div>
         </div>
 
-        {/* ── 6. Newsletter ── */}
+        {/* ── 5. Newsletter ── */}
         <div className="rounded-xl px-6 py-8" style={{ background: '#f8fafc', border: '1px solid #e2e8f0' }}>
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             <div className="sm:flex-1">
@@ -226,11 +198,6 @@ export default function AnfrageErfolgPage() {
 
       </div>
 
-      {/* Calendly widget script */}
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
-      />
     </div>
   )
 }

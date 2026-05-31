@@ -68,7 +68,7 @@ export function Hero() {
                   boxShadow: '0 4px 12px rgba(29,78,216,0.3)',
                 }}
               >
-                Jetzt kostenlos testen →
+                14 Tage kostenlos testen →
               </Link>
               <Link
                 href="#demo"

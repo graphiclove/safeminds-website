@@ -45,7 +45,7 @@ export function CourseSelectionSidebar() {
         className="w-full py-3 px-4 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#1d4ed8] focus-visible:ring-offset-2"
         style={{ background: '#1d4ed8', boxShadow: '0 4px 12px rgba(29,78,216,0.3)' }}
       >
-        Test-Zugang anfragen →
+        14 Tage kostenlos anfragen →
       </button>
       <button
         onClick={clearSelection}
@@ -128,7 +128,7 @@ export function CourseSelectionSidebar() {
             className="shrink-0 py-2.5 px-5 rounded-xl font-bold text-sm text-white focus-visible:ring-2 focus-visible:ring-[#1d4ed8] focus-visible:ring-offset-2"
             style={{ background: '#1d4ed8', boxShadow: '0 4px 12px rgba(29,78,216,0.3)' }}
           >
-            Anfragen →
+            14 Tage testen →
           </button>
         </div>
       </div>
