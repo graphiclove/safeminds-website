@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
         BRANCHE: data.branche,
         AKTUELLES_SYSTEM: data.aktuelles_system,
         ANGEFRAGTE_KURSE: data.angefragte_kurse.join(', '),
+        TELEFON: data.telefon,
         ...(data.position_sonstiges && { POSITION_SONSTIGES: data.position_sonstiges }),
         ...(data.begruendung        && { BEGRUENDUNG:        data.begruendung }),
       }

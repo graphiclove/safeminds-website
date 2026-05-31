@@ -2,8 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useCourseSelection } from '@/lib/courseSelectionStore'
+
+const TEAM_AVATARS = [
+  { name: 'Cem Yücetas',    src: '/images/team/Cem Yücetas.png' },
+  { name: 'Adam Drobiec',   src: '/images/team/Adam Drobiec.png' },
+  { name: 'Stefan Bechler', src: '/images/team/Stefan Bechler.png' },
+  { name: 'Eric Olders',    src: '/images/team/Eric Olders.png' },
+]
 
 const POSITIONEN = [
   'Geschäftsführer:in',
@@ -32,6 +40,7 @@ interface FormData {
   vorname: string
   nachname: string
   email: string
+  telefon: string
   unternehmen: string
   position: string
   position_sonstiges: string
@@ -48,6 +57,7 @@ const INITIAL: FormData = {
   vorname: '',
   nachname: '',
   email: '',
+  telefon: '',
   unternehmen: '',
   position: '',
   position_sonstiges: '',
@@ -65,6 +75,7 @@ function validateStep(data: FormData, step: number): Errors {
     if (!data.nachname.trim()) e.nachname = 'Nachname erforderlich'
     if (!data.email.trim()) e.email = 'E-Mail erforderlich'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Ungültige E-Mail-Adresse'
+    if (!data.telefon.trim()) e.telefon = 'Telefonnummer erforderlich'
     if (!data.unternehmen.trim()) e.unternehmen = 'Unternehmen erforderlich'
     if (!data.position) e.position = 'Bitte Position wählen'
   }
@@ -142,6 +153,7 @@ export default function AnfragePage() {
         }),
       })
       if (!res.ok) throw new Error()
+      sessionStorage.setItem('sm_submitted', JSON.stringify({ vorname: form.vorname, telefon: form.telefon, email: form.email }))
       router.push('/anfrage/erfolg')
     } catch {
       setSubmitStatus('error')
@@ -168,104 +180,148 @@ export default function AnfragePage() {
 
   return (
     <main className="min-h-screen py-12 px-4 pb-24" style={{ background: '#f8fafc' }}>
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-4xl mx-auto">
 
-        {/* Back */}
-        <Link
-          href="/kurse"
-          className="inline-flex items-center gap-1.5 text-sm text-[#64748b] hover:text-[#0f172a] transition-colors mb-8 focus-visible:ring-2 focus-visible:ring-[#1d4ed8] rounded"
-        >
-          ← Zurück zur Kursauswahl
-        </Link>
+        {/* Back + Stepper — zentriert wie vorher */}
+        <div className="max-w-xl mx-auto">
+          <Link
+            href="/kurse"
+            className="inline-flex items-center gap-1.5 text-sm text-[#64748b] hover:text-[#0f172a] transition-colors mb-8 focus-visible:ring-2 focus-visible:ring-[#1d4ed8] rounded"
+          >
+            ← Zurück zur Kursauswahl
+          </Link>
 
-        {/* Stepper */}
-        <div className="flex items-center mb-10" role="list" aria-label="Formular-Fortschritt">
-          {([1, 2, 3] as const).map((s, i) => (
-            <div key={s} className="flex items-center" role="listitem">
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                  s < step ? 'bg-[#10b981] text-white'
-                  : s === step ? 'bg-[#1d4ed8] text-white'
-                  : 'bg-white border-2 border-[#e2e8f0] text-[#94a3b8]'
-                }`}
-                aria-current={s === step ? 'step' : undefined}
-              >
-                {s < step ? '✓' : s}
+          {/* Stepper */}
+          <div className="flex items-center mb-10" role="list" aria-label="Formular-Fortschritt">
+            {([1, 2, 3] as const).map((s, i) => (
+              <div key={s} className="flex items-center" role="listitem">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
+                    s < step ? 'bg-[#10b981] text-white'
+                    : s === step ? 'bg-[#1d4ed8] text-white'
+                    : 'bg-white border-2 border-[#e2e8f0] text-[#94a3b8]'
+                  }`}
+                  aria-current={s === step ? 'step' : undefined}
+                >
+                  {s < step ? '✓' : s}
+                </div>
+                {i < 2 && (
+                  <div className={`h-0.5 w-10 mx-1 ${s < step ? 'bg-[#10b981]' : 'bg-[#e2e8f0]'}`} />
+                )}
               </div>
-              {i < 2 && (
-                <div className={`h-0.5 w-10 mx-1 ${s < step ? 'bg-[#10b981]' : 'bg-[#e2e8f0]'}`} />
-              )}
-            </div>
-          ))}
-          <span className="ml-3 text-sm text-[#64748b]">Schritt {step} von 3</span>
+            ))}
+            <span className="ml-3 text-sm text-[#64748b]">Schritt {step} von 3</span>
+          </div>
         </div>
 
-        {/* ── Step 1: Über dich ── */}
+        {/* ── Step 1: Über dich — Form links, Hint-Karte rechts ── */}
         {step === 1 && (
-          <div>
-            <h1 className="text-2xl font-bold text-[#0f172a] mb-2">Über dich</h1>
-            <p className="text-[#64748b] mb-8 text-sm">Damit wir deinen Test-Zugang einrichten können.</p>
+          <div className="flex gap-8 items-start">
 
-            <div className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="vorname">Vorname *</label>
-                  <input id="vorname" type="text" value={form.vorname} onChange={(e) => update('vorname', e.target.value)}
-                    placeholder="Max" className={inputCls('vorname')} aria-invalid={!!errors.vorname} aria-describedby={errors.vorname ? 'err-vorname' : undefined} />
-                  {errors.vorname && <p id="err-vorname" className="text-xs text-red-500 mt-1">{errors.vorname}</p>}
+            {/* Formular */}
+            <div className="flex-1 min-w-0 max-w-xl">
+              <h1 className="text-2xl font-bold text-[#0f172a] mb-2">Über dich</h1>
+              <p className="text-[#64748b] mb-8 text-sm">Damit wir deinen Test-Zugang einrichten können.</p>
+
+              <div className="space-y-5">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="vorname">Vorname *</label>
+                    <input id="vorname" type="text" value={form.vorname} onChange={(e) => update('vorname', e.target.value)}
+                      placeholder="Max" className={inputCls('vorname')} aria-invalid={!!errors.vorname} aria-describedby={errors.vorname ? 'err-vorname' : undefined} />
+                    {errors.vorname && <p id="err-vorname" className="text-xs text-red-500 mt-1">{errors.vorname}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="nachname">Nachname *</label>
+                    <input id="nachname" type="text" value={form.nachname} onChange={(e) => update('nachname', e.target.value)}
+                      placeholder="Mustermann" className={inputCls('nachname')} aria-invalid={!!errors.nachname} aria-describedby={errors.nachname ? 'err-nachname' : undefined} />
+                    {errors.nachname && <p id="err-nachname" className="text-xs text-red-500 mt-1">{errors.nachname}</p>}
+                  </div>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="nachname">Nachname *</label>
-                  <input id="nachname" type="text" value={form.nachname} onChange={(e) => update('nachname', e.target.value)}
-                    placeholder="Mustermann" className={inputCls('nachname')} aria-invalid={!!errors.nachname} aria-describedby={errors.nachname ? 'err-nachname' : undefined} />
-                  {errors.nachname && <p id="err-nachname" className="text-xs text-red-500 mt-1">{errors.nachname}</p>}
+                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="email">E-Mail *</label>
+                  <input id="email" type="email" value={form.email} onChange={(e) => update('email', e.target.value)}
+                    placeholder="max@firma.de" className={inputCls('email')} aria-invalid={!!errors.email} aria-describedby={errors.email ? 'err-email' : undefined} />
+                  {errors.email && <p id="err-email" className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="email">E-Mail *</label>
-                <input id="email" type="email" value={form.email} onChange={(e) => update('email', e.target.value)}
-                  placeholder="max@firma.de" className={inputCls('email')} aria-invalid={!!errors.email} aria-describedby={errors.email ? 'err-email' : undefined} />
-                {errors.email && <p id="err-email" className="text-xs text-red-500 mt-1">{errors.email}</p>}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="unternehmen">Unternehmen *</label>
-                <input id="unternehmen" type="text" value={form.unternehmen} onChange={(e) => update('unternehmen', e.target.value)}
-                  placeholder="Muster GmbH" className={inputCls('unternehmen')} aria-invalid={!!errors.unternehmen} aria-describedby={errors.unternehmen ? 'err-unternehmen' : undefined} />
-                {errors.unternehmen && <p id="err-unternehmen" className="text-xs text-red-500 mt-1">{errors.unternehmen}</p>}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="position">Position / Rolle *</label>
-                <select id="position" value={form.position} onChange={(e) => update('position', e.target.value)}
-                  className={selectCls('position')} aria-invalid={!!errors.position}>
-                  <option value="">Bitte wählen</option>
-                  {POSITIONEN.map((p) => <option key={p} value={p}>{p}</option>)}
-                </select>
-                {errors.position && <p className="text-xs text-red-500 mt-1">{errors.position}</p>}
-              </div>
-
-              {form.position === 'Sonstiges' && (
                 <div>
-                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="position_sonstiges">Welche Position?</label>
-                  <input id="position_sonstiges" type="text" value={form.position_sonstiges}
-                    onChange={(e) => update('position_sonstiges', e.target.value)}
-                    placeholder="z.B. Projektleiter" className={inputCls('position_sonstiges')} />
+                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="telefon">Telefon *</label>
+                  <input id="telefon" type="tel" value={form.telefon} onChange={(e) => update('telefon', e.target.value)}
+                    placeholder="+49 170 1234567" className={inputCls('telefon')} aria-invalid={!!errors.telefon} aria-describedby={errors.telefon ? 'err-telefon' : undefined} />
+                  {errors.telefon && <p id="err-telefon" className="text-xs text-red-500 mt-1">{errors.telefon}</p>}
                 </div>
-              )}
 
-              <button onClick={goNext} className={`w-full ${btnPrimary}`}
-                style={{ background: '#1d4ed8', boxShadow: '0 4px 12px rgba(29,78,216,0.25)' }}>
-                Weiter →
-              </button>
+                <div>
+                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="unternehmen">Unternehmen *</label>
+                  <input id="unternehmen" type="text" value={form.unternehmen} onChange={(e) => update('unternehmen', e.target.value)}
+                    placeholder="Muster GmbH" className={inputCls('unternehmen')} aria-invalid={!!errors.unternehmen} aria-describedby={errors.unternehmen ? 'err-unternehmen' : undefined} />
+                  {errors.unternehmen && <p id="err-unternehmen" className="text-xs text-red-500 mt-1">{errors.unternehmen}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="position">Position / Rolle *</label>
+                  <select id="position" value={form.position} onChange={(e) => update('position', e.target.value)}
+                    className={selectCls('position')} aria-invalid={!!errors.position}>
+                    <option value="">Bitte wählen</option>
+                    {POSITIONEN.map((p) => <option key={p} value={p}>{p}</option>)}
+                  </select>
+                  {errors.position && <p className="text-xs text-red-500 mt-1">{errors.position}</p>}
+                </div>
+
+                {form.position === 'Sonstiges' && (
+                  <div>
+                    <label className="block text-sm font-medium text-[#0f172a] mb-2" htmlFor="position_sonstiges">Welche Position?</label>
+                    <input id="position_sonstiges" type="text" value={form.position_sonstiges}
+                      onChange={(e) => update('position_sonstiges', e.target.value)}
+                      placeholder="z.B. Projektleiter" className={inputCls('position_sonstiges')} />
+                  </div>
+                )}
+
+                <button onClick={goNext} className={`w-full ${btnPrimary}`}
+                  style={{ background: '#1d4ed8', boxShadow: '0 4px 12px rgba(29,78,216,0.25)' }}>
+                  Weiter →
+                </button>
+              </div>
             </div>
+
+            {/* Hint-Karte — neben dem Formular, nur auf Desktop */}
+            <div
+              className="hidden lg:flex flex-col items-center text-center sticky top-24 w-52 shrink-0 rounded-2xl p-5"
+              style={{ border: '2px solid #1d4ed8', background: '#ffffff', boxShadow: '0 4px 16px rgba(29,78,216,0.08)' }}
+            >
+              {/* Avatar-Stack */}
+              <div className="flex justify-center mb-4">
+                {TEAM_AVATARS.map((m, i) => (
+                  <div
+                    key={m.name}
+                    className="relative w-11 h-11 rounded-full overflow-hidden"
+                    style={{ marginLeft: i === 0 ? 0 : -10, zIndex: TEAM_AVATARS.length - i, border: '2px solid #1d4ed8' }}
+                    title={m.name}
+                  >
+                    <Image src={m.src} alt={m.name} fill className="object-cover" sizes="44px" />
+                  </div>
+                ))}
+              </div>
+
+              <p className="font-bold text-[#0f172a] mb-2" style={{ fontSize: '0.95rem', lineHeight: 1.3 }}>
+                Wir rufen dich persönlich an
+              </p>
+              <p className="text-[#64748b]" style={{ fontSize: '0.83rem', lineHeight: 1.5 }}>
+                Jemand vom Team meldet sich noch heute — kein Bot, kein automatischer Account.
+              </p>
+              <p className="mt-3 text-[#1d4ed8] font-semibold" style={{ fontSize: '0.83rem' }}>
+                ☎ Bitte korrekte Nummer eingeben.
+              </p>
+            </div>
+
           </div>
         )}
 
         {/* ── Step 2: Über euren Bedarf ── */}
         {step === 2 && (
-          <div>
+          <div className="max-w-xl mx-auto">
             <h1 className="text-2xl font-bold text-[#0f172a] mb-2">Über euren Bedarf</h1>
             <p className="text-[#64748b] mb-8 text-sm">Hilft uns, den Zugang optimal vorzubereiten.</p>
 
@@ -313,7 +369,7 @@ export default function AnfragePage() {
 
         {/* ── Step 3: Übersicht & Absenden ── */}
         {step === 3 && (
-          <div>
+          <div className="max-w-xl mx-auto">
             <h1 className="text-2xl font-bold text-[#0f172a] mb-2">Übersicht & Absenden</h1>
             <p className="text-[#64748b] mb-8 text-sm">Prüfe deine Kursauswahl und sende die Anfrage ab.</p>
 

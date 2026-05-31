@@ -30,6 +30,7 @@ export const testRequestSchema = z.object({
   branche: z.string().min(1, 'Branche erforderlich'),
   aktuelles_system: z.string().min(1, 'Bitte wählen'),
   begruendung: z.string().optional(),
+  telefon: z.string().min(1, 'Telefonnummer erforderlich'),
   datenschutz: z.boolean().refine((v) => v === true, 'Datenschutz muss akzeptiert werden'),
   angefragte_kurse: z.array(z.string()).min(1, 'Mindestens 1 Kurs erforderlich'),
   form_source: z.string(),

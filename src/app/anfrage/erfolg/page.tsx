@@ -1,14 +1,22 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useCourseSelection } from '@/lib/courseSelectionStore'
 import type { Course } from '@/data/courses'
 
 const STEPS = [
-  { n: '1', title: 'Wir prüfen deine Anfrage', desc: 'Noch heute — persönlich, kein Bot.' },
+  { n: '1', title: 'Jemand vom Team ruft dich an', desc: 'Persönlich, noch heute — kein Automat.' },
   { n: '2', title: 'Wir richten deinen Zugang ein', desc: 'Innerhalb von 24 Stunden.' },
   { n: '3', title: 'Du loggst dich ein und legst los', desc: 'Mit deinen E-Mail-Login-Daten.' },
+]
+
+const TEAM = [
+  { name: 'Cem Yücetas',   src: '/images/team/Cem Yücetas.png' },
+  { name: 'Adam Drobiec',  src: '/images/team/Adam Drobiec.png' },
+  { name: 'Stefan Bechler',src: '/images/team/Stefan Bechler.png' },
+  { name: 'Eric Olders',   src: '/images/team/Eric Olders.png' },
 ]
 
 const VIDEO_SRC    = '/videos/kontaktaufnahme_video_aftersales-vertical_with_captions.mp4'
@@ -21,6 +29,12 @@ export default function AnfrageErfolgPage() {
   const [nlEmail, setNlEmail] = useState('')
   const [nlStatus, setNlStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [nlError, setNlError] = useState('')
+  const [submittedPhone, setSubmittedPhone] = useState<string | null>(null)
+  const [submittedName, setSubmittedName] = useState<string | null>(null)
+  const [submittedEmail, setSubmittedEmail] = useState<string | null>(null)
+  const [editingPhone, setEditingPhone] = useState(false)
+  const [correctedPhone, setCorrectedPhone] = useState('')
+  const [correctionStatus, setCorrectionStatus] = useState<'idle' | 'loading' | 'sent'>('idle')
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Snapshot selected courses on mount, then clear the selection
@@ -29,8 +43,41 @@ export default function AnfrageErfolgPage() {
       setCourses(selectedCourses)
       clearSelection()
     }
+    try {
+      const raw = sessionStorage.getItem('sm_submitted')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        setSubmittedPhone(parsed.telefon ?? null)
+        setSubmittedName(parsed.vorname ?? null)
+        setSubmittedEmail(parsed.email ?? null)
+        setCorrectedPhone(parsed.telefon ?? '')
+        sessionStorage.removeItem('sm_submitted')
+      }
+    } catch { /* ignore */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  async function handlePhoneCorrection(e: React.FormEvent) {
+    e.preventDefault()
+    if (!correctedPhone.trim()) return
+    setCorrectionStatus('loading')
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: submittedEmail ?? 'unbekannt@safeminds.eu',
+          message: `Korrigierte Telefonnummer: ${correctedPhone} (vorher: ${submittedPhone})`,
+          form_source: 'phone-correction',
+        }),
+      })
+      setSubmittedPhone(correctedPhone)
+      setEditingPhone(false)
+      setCorrectionStatus('sent')
+    } catch {
+      setCorrectionStatus('idle')
+    }
+  }
 
   async function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -57,23 +104,99 @@ export default function AnfrageErfolgPage() {
         {/* ── 1. Erfolgs-Banner ── */}
         <div
           className="text-center rounded-2xl px-8 py-10"
-          style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', boxShadow: '0 4px 20px rgba(16,185,129,0.08)' }}
+          style={{ background: '#ffffff', border: '3px solid #1d4ed8', boxShadow: '0 4px 24px rgba(29,78,216,0.10)' }}
         >
+          {/* Check icon */}
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-            style={{ background: '#ffffff', border: '2px solid #10b981' }}
+            style={{ background: '#eff6ff', border: '2px solid #1d4ed8' }}
             aria-hidden="true"
           >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
+
           <h1 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#0f172a' }}>
-            Anfrage erhalten!
+            {submittedName ? `Danke, ${submittedName}!` : 'Anfrage erhalten!'}
           </h1>
-          <p style={{ color: '#64748b', fontSize: '1.05rem' }}>
-            Wir richten deinen Test-Zugang innerhalb von 24&nbsp;h ein und melden uns per E-Mail.
+
+          {/* Team avatars */}
+          <div className="flex items-center justify-center mb-3">
+            <div className="flex">
+              {TEAM.map((member, i) => (
+                <div
+                  key={member.name}
+                  className="relative w-10 h-10 rounded-full overflow-hidden"
+                  style={{ marginLeft: i === 0 ? 0 : -10, zIndex: TEAM.length - i, border: '2px solid #1d4ed8' }}
+                  title={member.name}
+                >
+                  <Image
+                    src={member.src}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mb-5" style={{ color: '#64748b', fontSize: '1.05rem' }}>
+            Jemand vom Team meldet sich persönlich bei dir — kein Automat, kein Bot.
           </p>
+
+          {/* Phone confirmation + inline correction */}
+          {submittedPhone && (
+            <div
+              className="inline-flex flex-col items-center gap-3 rounded-xl px-6 py-4 text-sm mx-auto"
+              style={{ background: '#eff6ff', border: '1px solid #dbeafe', minWidth: 280 }}
+            >
+              {correctionStatus === 'sent' ? (
+                <p className="font-semibold" style={{ color: '#10b981' }}>
+                  ✓ Notiert — wir rufen dich unter <strong>{submittedPhone}</strong> an.
+                </p>
+              ) : (
+                <>
+                  <div style={{ color: '#0f172a' }}>
+                    <span style={{ color: '#64748b' }}>Wir rufen dich an unter </span>
+                    <strong style={{ fontSize: '1rem' }}>{submittedPhone}</strong>
+                  </div>
+
+                  {!editingPhone ? (
+                    <button
+                      onClick={() => setEditingPhone(true)}
+                      className="text-xs font-semibold underline underline-offset-2 transition-colors hover:text-[#1e3a8a]"
+                      style={{ color: '#1d4ed8' }}
+                    >
+                      Falsche Nummer? Hier korrigieren →
+                    </button>
+                  ) : (
+                    <form onSubmit={handlePhoneCorrection} className="flex gap-2 w-full">
+                      <input
+                        type="tel"
+                        value={correctedPhone}
+                        onChange={(e) => setCorrectedPhone(e.target.value)}
+                        placeholder="+49 170 1234567"
+                        className="flex-1 min-w-0 rounded-lg px-3 py-2 text-sm border focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]"
+                        style={{ background: '#ffffff', borderColor: '#93c5fd', color: '#0f172a' }}
+                        autoFocus
+                      />
+                      <button
+                        type="submit"
+                        disabled={correctionStatus === 'loading'}
+                        className="shrink-0 font-semibold text-xs px-4 py-2 rounded-lg text-white disabled:opacity-60"
+                        style={{ background: '#1d4ed8' }}
+                      >
+                        {correctionStatus === 'loading' ? '…' : 'OK'}
+                      </button>
+                    </form>
+                  )}
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* ── 2. Angefragte Kurse ── */}

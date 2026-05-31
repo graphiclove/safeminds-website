@@ -161,6 +161,7 @@ export async function sendTestRequestNotification(data: {
   vorname: string
   nachname: string
   email: string
+  telefon: string
   unternehmen: string
   position: string
   position_sonstiges?: string
@@ -202,6 +203,8 @@ export async function sendTestRequestNotification(data: {
             <td style="padding: 4px 0; font-weight: 600;">${name}</td></tr>
         <tr><td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">E-Mail:</td>
             <td style="padding: 4px 0;">${data.email}</td></tr>
+        <tr><td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Telefon:</td>
+            <td style="padding: 4px 0; font-weight: 600;"><a href="tel:${data.telefon}" style="color: #1d4ed8; text-decoration: none;">${data.telefon}</a></td></tr>
         <tr><td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Unternehmen:</td>
             <td style="padding: 4px 0;">${data.unternehmen}</td></tr>
         <tr><td style="padding: 4px 0; color: #64748b; font-size: 14px; vertical-align: top;">Position:</td>

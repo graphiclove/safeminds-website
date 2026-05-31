@@ -1,113 +1,182 @@
-import Link from 'next/link'
-import { Icon, type IconName } from '@/components/ui/Icon'
+'use client'
 
-const roles: { role: string; icon: IconName; headline: string; desc: string; benefits: string[]; cta: string; color: string }[] = [
+import { useState } from 'react'
+import Link from 'next/link'
+
+const ROLES = [
   {
-    role: 'Arbeitgeber & Geschäftsführer',
-    icon: 'building',
-    headline: 'Haftung weg. Dokumentation drin.',
-    desc: 'Sie sind gesetzlich verpflichtet, Mitarbeiter jährlich zu unterweisen. SafeMinds erledigt das rechtssicher — automatisch, dokumentiert, revisionssicher. Kein Papierkram, kein Organisationsaufwand.',
+    id: 'agf',
+    label: 'Arbeitgeber',
+    tag: 'Arbeitgeber & Geschäftsführer',
+    stat: '€25.000',
+    statLabel: 'Bußgeld\nvermieden',
+    headline: 'Haftung weg.\nDokumentation drin.',
+    desc: 'Sie sind gesetzlich verpflichtet, Mitarbeiter jährlich zu unterweisen. SafeMinds erledigt das rechtssicher — automatisch, dokumentiert, revisionssicher. Kein Papierkram.',
     benefits: [
-      'Bußgelder bis €25.000 vermieden',
       'Nachweise bei Betriebsprüfung sofort verfügbar',
-      'Zeitaufwand von Stunden auf Minuten reduziert',
+      'Automatische Jahreserinnerungen',
+      'Zeitaufwand: Stunden → Minuten',
     ],
     cta: 'Jetzt absichern',
-    color: 'blue',
   },
   {
-    role: 'Sicherheitsbeauftragte (SiBe)',
-    icon: 'shield' as IconName,
-    headline: 'Endlich ein System, das Ihnen die Arbeit abnimmt.',
-    desc: 'Schluss mit Excel-Listen, Unterschriftenbögen und der manuellen Nachverfolgung wer was wann gemacht hat. SafeMinds dokumentiert automatisch, erinnert selbstständig und liefert auf Knopfdruck alle Nachweise.',
+    id: 'sibe',
+    label: 'Sicherheitsbeauftragte',
+    tag: 'Sicherheitsbeauftragte (SiBe)',
+    stat: '100%',
+    statLabel: 'Digital &\npapierlos',
+    headline: 'Endlich ein System,\ndas die Arbeit abnimmt.',
+    desc: 'Schluss mit Excel-Listen und manueller Nachverfolgung. SafeMinds dokumentiert automatisch, erinnert selbstständig und liefert auf Knopfdruck alle Nachweise.',
     benefits: [
       'Automatische Erinnerungen an Mitarbeiter',
-      'Übersicht über alle offenen Unterweisungen',
+      'Übersicht aller offenen Unterweisungen',
       'Rechtssichere PDF-Zertifikate je Mitarbeiter',
     ],
     cta: 'Demo ansehen',
-    color: 'green',
   },
   {
-    role: 'HR & Personalverantwortliche',
-    icon: 'users' as IconName,
-    headline: 'Onboarding und Unterweisung in einem Durchlauf.',
-    desc: 'Neue Mitarbeiter erhalten beim ersten Login automatisch ihre Einweisung — mehrsprachig, mit Unternehmensfilm und Pflichtunterweisung in einem. Kein zweites Gespräch, kein Dolmetscher, kein Zeitverlust.',
+    id: 'hr',
+    label: 'HR & Personal',
+    tag: 'HR & Personalverantwortliche',
+    stat: '4+',
+    statLabel: 'Sprachen\ninklusive',
+    headline: 'Onboarding und\nUnterweisung in einem.',
+    desc: 'Neue Mitarbeiter erhalten beim ersten Login automatisch ihre Einweisung — mehrsprachig, mit Unternehmensfilm und Pflichtunterweisung. Kein Dolmetscher, kein Zeitverlust.',
     benefits: [
-      'Mehrsprachig: Polnisch, Türkisch, Rumänisch u.v.m.',
+      'Polnisch, Türkisch, Rumänisch u.v.m.',
       'Onboarding + Arbeitssicherheit in einem',
       'Nachweis-PDF sofort nach Abschluss',
     ],
     cta: 'Mehr erfahren',
-    color: 'purple',
   },
 ]
 
-const colorMap = {
-  blue: {
-    badge: 'bg-blue-50 text-blue-700 border-blue-100',
-    icon: 'bg-blue-100 text-blue-600',
-    check: 'text-blue-500',
-    cta: 'bg-blue-600 hover:bg-blue-700 text-white',
-  },
-  green: {
-    badge: 'bg-green-50 text-green-700 border-green-100',
-    icon: 'bg-green-100 text-green-600',
-    check: 'text-green-500',
-    cta: 'bg-green-600 hover:bg-green-700 text-white',
-  },
-  purple: {
-    badge: 'bg-purple-50 text-purple-700 border-purple-100',
-    icon: 'bg-purple-100 text-purple-600',
-    check: 'text-purple-500',
-    cta: 'bg-purple-600 hover:bg-purple-700 text-white',
-  },
-}
-
 export function RoleSections() {
+  const [active, setActive] = useState(0)
+  const role = ROLES[active]
+
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">Für wen ist SafeMinds?</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+    <section style={{ background: '#0f172a' }} className="py-24 px-4 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+
+        {/* ── Header ── */}
+        <div className="text-center mb-12">
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#60a5fa' }}>
+            Für wen ist SafeMinds?
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
             Für jeden im Betrieb ein Gewinn
           </h2>
-          <p className="mt-3 text-gray-500 max-w-lg mx-auto">
-            SafeMinds löst gleichzeitig das Problem von Geschäftsführern, Sicherheitsbeauftragten und HR.
+          <p className="mt-4 text-sm sm:text-base max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            Wähle deine Rolle — SafeMinds löst genau dein Problem.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-7">
-          {roles.map(r => {
-            const colors = colorMap[r.color as keyof typeof colorMap]
-            return (
-              <div key={r.role} className="rounded-2xl bg-gray-50 border border-gray-100 p-7 flex flex-col gap-5 hover:shadow-md transition-shadow">
-                <div>
-                  <span className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full border mb-4 ${colors.badge}`}>
-                    <Icon name={r.icon} size={14} />
-                    {r.role}
-                  </span>
-                  <h3 className="text-lg font-bold text-gray-900 leading-snug">{r.headline}</h3>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">{r.desc}</p>
-                <ul className="flex flex-col gap-2 flex-1">
-                  {r.benefits.map(b => (
-                    <li key={b} className="flex items-start gap-2 text-sm">
-                      <svg className={`h-4 w-4 flex-shrink-0 mt-0.5 ${colors.check}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/testen" className={`w-full text-center rounded-xl py-2.5 font-semibold text-sm transition-colors ${colors.cta}`}>
-                  {r.cta}
-                </Link>
-              </div>
-            )
-          })}
+        {/* ── Role Tabs ── */}
+        <div className="flex gap-2 justify-center mb-8 flex-wrap">
+          {ROLES.map((r, i) => (
+            <button
+              key={r.id}
+              onClick={() => setActive(i)}
+              className="px-5 py-2.5 rounded-full font-semibold text-sm transition-all focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f172a]"
+              style={
+                active === i
+                  ? { background: '#ffffff', color: '#0f172a' }
+                  : { background: 'transparent', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.15)' }
+              }
+            >
+              {r.label}
+            </button>
+          ))}
         </div>
+
+        {/* ── Content Panel ── */}
+        <div
+          className="rounded-3xl p-8 sm:p-12"
+          style={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.07)', boxShadow: '0 24px 60px rgba(0,0,0,0.4)' }}
+        >
+          <div className="grid lg:grid-cols-[1fr_220px] gap-10 items-center">
+
+            {/* Left: Text */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#60a5fa' }}>
+                {role.tag}
+              </p>
+              <h3
+                className="font-extrabold text-white mb-5 leading-tight whitespace-pre-line"
+                style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+              >
+                {role.headline}
+              </h3>
+              <p className="leading-relaxed mb-8 max-w-xl" style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.97rem' }}>
+                {role.desc}
+              </p>
+
+              {/* Benefits */}
+              <ul className="space-y-2.5 mb-10">
+                {role.benefits.map((b) => (
+                  <li key={b} className="flex items-center gap-3 text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                    <span
+                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                      style={{ background: 'rgba(29,78,216,0.35)', color: '#60a5fa' }}
+                    >
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/kurse"
+                className="inline-flex items-center gap-2 font-bold text-sm px-8 py-4 rounded-xl text-white transition-all hover:-translate-y-0.5"
+                style={{ background: '#1d4ed8', boxShadow: '0 4px 24px rgba(29,78,216,0.45)' }}
+              >
+                {role.cta} →
+              </Link>
+            </div>
+
+            {/* Right: Big Stat */}
+            <div
+              className="hidden lg:flex flex-col items-center justify-center text-center rounded-2xl py-10 px-6"
+              style={{ background: 'rgba(29,78,216,0.12)', border: '1px solid rgba(29,78,216,0.25)' }}
+            >
+              <div
+                className="font-black text-white leading-none mb-3"
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5rem)', letterSpacing: '-0.04em' }}
+              >
+                {role.stat}
+              </div>
+              <p
+                className="font-semibold whitespace-pre-line leading-snug"
+                style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.8rem' }}
+              >
+                {role.statLabel}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── Dot Indicators ── */}
+        <div className="flex justify-center gap-2 mt-6">
+          {ROLES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Rolle ${i + 1}`}
+              className="rounded-full transition-all"
+              style={{
+                height: 4,
+                width: active === i ? 28 : 8,
+                background: active === i ? '#ffffff' : 'rgba(255,255,255,0.2)',
+              }}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   )
