@@ -27,7 +27,7 @@ export function PromoBanner() {
         <span>14 Tage kostenlos — ohne Kreditkarte, ohne Vertragsbindung</span>
       </div>
       <a
-        href="https://app.safeminds.eu/registrierung"
+        href="/anfrage"
         className="bg-white text-[#1d4ed8] font-semibold text-xs px-4 py-1.5 rounded-md hover:-translate-y-px transition-transform whitespace-nowrap focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-800"
       >
         Jetzt starten →

@@ -28,17 +28,17 @@ export function Header() {
         {/* CTAs */}
         <div className="flex items-center gap-3">
           <a
-            href="https://app.safeminds.eu/mein-konto"
+            href="https://app.safeminds.eu/login/"
             className="hidden sm:block text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
           >
             Login
           </a>
-          <a
-            href="https://app.safeminds.eu/registrierung"
+          <Link
+            href="/anfrage"
             className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 transition-colors"
           >
             14 Tage kostenlos testen
-          </a>
+          </Link>
         </div>
       </div>
     </header>
