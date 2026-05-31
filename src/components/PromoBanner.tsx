@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 export function PromoBanner() {
   const [visible, setVisible] = useState(false)
@@ -27,12 +26,12 @@ export function PromoBanner() {
       <div className="flex items-center gap-2">
         <span>14 Tage kostenlos — ohne Kreditkarte, ohne Vertragsbindung</span>
       </div>
-      <Link
-        href="/testen"
+      <a
+        href="https://app.safeminds.eu/registrierung"
         className="bg-white text-[#1d4ed8] font-semibold text-xs px-4 py-1.5 rounded-md hover:-translate-y-px transition-transform whitespace-nowrap focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-800"
       >
         Jetzt starten →
-      </Link>
+      </a>
       <button
         onClick={close}
         aria-label="Schließen"
